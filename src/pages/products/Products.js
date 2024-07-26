@@ -6,7 +6,7 @@ export default function Products() {
   return (
     <div>
         <Header/>
-            Home
+            Product
         <Footer/>
     </div>
   )

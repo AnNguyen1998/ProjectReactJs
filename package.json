@@ -13,13 +13,16 @@
     "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.2.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "homepage": "https://AnNguyen1998.github.io/ProjectReactJs"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

@@ -6,7 +6,7 @@ export default function Productdetail() {
   return (
     <div>
         <Header/>
-            Home
+            Productdetail
         <Footer/>
     </div>
   )
