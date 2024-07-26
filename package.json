@@ -2,7 +2,7 @@
   "name": "projectreactjs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://AnNguyen1998.github.io/ProjectReactJs",
+  "homepage": "https://annguyen1998.github.io/ProjectReactJs/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
