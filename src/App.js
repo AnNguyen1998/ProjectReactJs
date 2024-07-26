@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home/>}/>
+          <Route path="/ProjectReactJs" element={<Home/>}/>
           <Route path="/product" element={<Product/>}/>
           <Route path="/detail/:id" element={<Productdetail/>}/>
           <Route path="/register" element={<Register/>}/>
