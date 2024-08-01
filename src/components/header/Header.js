@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-import {Layout, Menu} from 'antd'
-import {MailOutlined, AppstoreOutlined, SettingOutlined} from '@ant-design/icons'
-
+import {Col, Layout, Menu, Row, Dropdown} from 'antd'
+import { AppstoreOutlined, SettingOutlined, HomeOutlined} from '@ant-design/icons'
+import './header.css'
 const items = [
   {
-    label: 'Navigation One',
+    label: 'Home',
     key: 'mail',
-    icon: <MailOutlined />,
+    icon: <HomeOutlined />,
   },
   {
     label: 'Navigation Two',
@@ -15,7 +15,7 @@ const items = [
   },
   {
     label: 'Navigation Three - Submenu',
-    key: 'SubMenu',
+    key: 'Submenu',
     icon: <SettingOutlined />,
     children: [
       {
@@ -60,12 +60,16 @@ const items = [
 export default function Header() {
   const [current, setCurrent] = useState('mail');
   const onClick = (e) => {
-    console.log('click ', e);
     setCurrent(e.key);
   };
   return (
-    <Layout>
-        <Menu  onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+    <Layout style={{padding:'50px 20px', position:'relative'}}>
+        <div style={{width:"100%", height:"100%", background:"black", opacity:"0.5", position:"absolute", top:"0", left:"0"}}></div>
+        <Row>
+        <Col span={24}>
+        <Menu style={{padding:'10px',background:'#d35400', zIndex:'1', width:'100%'}} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+        </Col>
+        </Row>
     </Layout>
 )
 }
