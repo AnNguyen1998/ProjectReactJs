@@ -2,30 +2,28 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Product from "../product/Product"
 import { Row } from 'reactstrap'
-
+import {useDispatch, useSelector} from 'react-redux'
+import { fetchGames } from '../../redux/productSlice'
+import Loading from '../../pages/handlePages/Loading'
+import Errorpage from '../../pages/handlePages/Errorpage'
 export default function Products() {
-  const [data, setData] = useState([])
-  const url ="https://66a1b51e967c89168f1d5fd2.mockapi.io/students/api/v1/student"
-  function fetchData(){
-    axios.get(url)
-    .then(function(res){
-      setData(res.data)
-    })
-    .catch(function(error){
-      console.log(error)
-    })
-  }
+  const {games, error, status} = useSelector(state => state.products)
+  const dispatch = useDispatch()
   useEffect(()=>{
-    fetchData()
+    if(status === 'start'){
+      dispatch(fetchGames())
+    }
   },[])
+  if(status === 'loading') return <Loading/>
+  if(status === 'failed') return <Errorpage error = {error}/>
   return (
     <div>
       <Row>
-        {
-          data.map((item, index)=>(
-            <Product key={index} product={item}/>
+        {/* {
+          games && games.map((item, index)=>(
+            <Product key={index} games={item}/>
           ))
-        }
+        } */}
       </Row>
     </div>
   )

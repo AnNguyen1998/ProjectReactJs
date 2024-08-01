@@ -2,12 +2,12 @@ import React from 'react'
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col } from 'reactstrap'
 
 export default function Product(props) {
-  const {product} = props
+  const {games} = props
   return (
     <div>
       <Col>
         <Card>
-          <img alt="" src=""/>
+          <img alt="" src={games.background_image}/>
           <CardBody>
             <CardTitle tag="h5">
               
@@ -19,7 +19,7 @@ export default function Product(props) {
               
             </CardSubtitle>
             <CardText>
-              {product.name}
+              {games.name}
             </CardText>
             <Button>
               Button
