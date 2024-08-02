@@ -1,23 +1,36 @@
-import { Card, Col } from 'antd'
 import React from 'react'
+import { Card, CardBody, CardLink, CardText, CardTitle, Col, ListGroup, ListGroupItem } from 'reactstrap'
 
 export default function Product(props) {
   const { games } = props
-  const { Meta } = Card
+
   return (
-    <div>
-      <Col xs={2} sm={4} md={6} lg={8} xl={10} style={{padding: '15px'}}>
-        <Card
-          hoverable
-          style={{
-            width: 240,
-            height: 400
-          }}
-          cover={<img alt="example" src={games.background_image} height={200}/>}
-        >
-          <Meta title={games.name} description={'Released: '+games.released} />
-        </Card>
-      </Col>
-    </div>
+    <Col xl={2} lg={3} md={4} sm={6} xs={12}>
+      <Card>
+        <img
+          alt="Card"
+          src={games.background_image}
+        />
+        <CardBody>
+          <CardTitle tag="h5">
+            {games.name}
+          </CardTitle>
+          <CardText>
+            This is some text within a card body.
+          </CardText>
+        </CardBody>
+        <ListGroup flush>
+          <ListGroupItem>
+            An item
+          </ListGroupItem>
+          <ListGroupItem>
+            A second item
+          </ListGroupItem>
+          <ListGroupItem>
+            And a third item
+          </ListGroupItem>
+        </ListGroup>
+      </Card>
+    </Col>
   )
 }

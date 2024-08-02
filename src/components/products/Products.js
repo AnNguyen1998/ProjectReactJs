@@ -4,9 +4,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import { fetchGames } from '../../redux/productSlice'
 import Loading from '../../pages/handlePages/Loading'
 import Errorpage from '../../pages/handlePages/Errorpage'
-import { Col, Layout, Row } from 'antd'
+import {Container, Row} from 'reactstrap'
+
 export default function Products() {
-  const {Content} = Layout
   const {games, error, status} = useSelector(state => state.products)
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -18,14 +18,14 @@ export default function Products() {
   if(status === 'loading') return <Loading/>
   if(status === 'failed') return <Errorpage error = {error}/>
   return (
-    <Content style={{border:'1px solid yellow', height:'40%', background:'black'}}>
-      <Row style={{justifyContent:'center'}}>
+    <Container fluid='true'>
+      <Row className='p-5'>
         {
-          games && games.slice(0,20).map((item, index)=>(
+          games && games.map((item, index)=>(
             <Product key={index} games={item}/>
           ))
         }
       </Row>
-    </Content>
+    </Container>
   )
 }
