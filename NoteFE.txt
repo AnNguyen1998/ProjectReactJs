@@ -1,0 +1,86 @@
+Từ khóa tìm kiếm :
+- uicolor - https://flatuicolors.com/
+- font google
+- box-shadow css
+- clip-path css - https://bennettfeely.com/clippy/
+- Gradient - https://webgradients.com/
+- color - https://coolors.co/palettes/trending
+- Anh demo - https://unsplash.com/s/photos/flash
+- Animation - https://animista.net/
+- Themes - https://themeforest.net/
+- Filter img -https://www.cssportal.com/css-image-filter-generator/
+- Css maker - https://www.toptal.com/developers/css3maker
+- Css Loading - https://10015.io/tools/css-loader-generator
+- Anh vector - https://undraw.co/search
+- Anh vector - https://www.drawkit.com/
+- Component Css - https://uiverse.io/all
+PC first
+/*Ipad ngang(1024 x 768)*/
+@media screen and (max-width: 1024px){
+  
+}
+/*Ipad dọc(768 x 1024)*/
+@media screen and (max-width: 768px){
+    
+}
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (max-width: 480px){
+    
+}
+/*Iphone(480 x 640)*/
+@media screen and (max-width: 320px){
+    
+}
+/*Smart phone nhỏ*/
+@media screen and (max-width: 240px){
+    
+}
+
+Mobile  first
+/*Smart phone nhỏ*/
+@media screen and (min-width: 240px){
+    
+}
+/*Iphone(480 x 640)*/
+@media screen and (min-width: 320px){
+    
+}
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (min-width: 480px){
+    
+}
+/*Ipad dọc(768 x 1024)*/
+@media screen and (min-width: 768px){
+    
+}
+/*Ipad ngang(1024 x 768)*/
+@media screen and (min-width: 1024px){
+  
+}
+web
+Animate.css | A cross-browser library of CSS animations.
+
+AOS - Animate on scroll library (michalsnik.github.io)
+****
+- Hostsv
+byethost.com
+****
+Public React App Github
+file package.json
+tren dependencies
+- "homepage": "https://AnNguyen1998.github.io/TenRespository"
+Trong "script":
+- "predeploy": "npm run build",
+"deploy": "gh-pages -d build"
+terminal
+- npm install gh-pages --save
+- npm run deploy
+
+****
+sweet alert
+https://devis-react.vercel.app/home-v3
+https://ss-furni.myshopify.com/
+https://apipheny.io/free-api/
+https://rawg.io/apidocs
+https://api.rawg.io/api/games?key=9afd9dc5ec3a458984ce4db1d781e160&dates=2024-07-26,2024-07-30
+https://devita-electronics.myshopify.com/
