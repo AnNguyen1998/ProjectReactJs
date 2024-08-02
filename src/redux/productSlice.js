@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useState } from "react";
 
 const initialState={
     games:[],
     status:'start',
     error:null
 }
-const url ="https://api.rawg.io/api/games?dates=2024-07-26%2C2024-07-30&key=9afd9dc5ec3a458984ce4db1d781e160&page_size=50"
+
+const url = "https://api.rawg.io/api/games?key=9afd9dc5ec3a458984ce4db1d781e160&page_size=50"
+
 export const fetchGames = createAsyncThunk("products/fetchGames", async ()=>{
     const response = await axios.get(url)
     return response.data.results
