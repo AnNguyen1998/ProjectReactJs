@@ -1,0 +1,81 @@
+.header{
+    background-color: #2b38d1;
+}
+.container{
+    color: white !important;
+}
+.d-sm-flex .breadcrumb{
+    color: white;
+    height: 28px;
+    transform: translateY(9px)
+}
+.icon-la{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    margin-left: 40px;
+}
+.menu-span{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.btn-close{
+    position: absolute;
+    top: 10px;
+    left: 45%;
+    font-size: 25px;
+}
+.input-canvas{
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.input-canvas input{
+    border-radius: 50px;
+}
+.input-canvas button{
+    background-color: white;
+    border: none;
+    color: black;
+    border-radius: 50px;
+}
+.breadcrumb-item .btn-sort{
+    color: white;
+    background-color: #2b38d1;
+    border: none;
+    position: relative;
+    transition: 1s;
+}
+.breadcrumb-item .btn-sort:hover::after{
+    content: '';
+    position: absolute;
+    border-top: 2px solid #16bcdc;
+    width: 100%;
+    top: -9px;
+    left: 0;
+    transition: 1s;
+}
+.container .nav-item a{
+    color: white;
+}
+strong .nav-item a{
+    color: black;
+    display: block;
+    transform: translateY(-10px);
+}
+strong .nav-item{
+    position: relative;
+    margin-top: 20px;
+}
+strong .nav-item::after{
+    content: '';
+    color: black;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid black;
+}
+
+

@@ -5,26 +5,27 @@ export default function Product(props) {
   const { games } = props
 
   return (
-    <Col xl={2} lg={3} md={4} sm={6} xs={12}>
-      <Card>
+    <Col xl={2} lg={3} md={4} sm={6} xs={12} className='p-3'>
+      <Card style={{height:'500px'}}>
         <img
           alt="Card"
-          src={games.background_image}
+          src=''
+          height={150}
         />
         <CardBody>
           <CardTitle tag="h5">
-            {games.name}
+            {games.product.category}{games.product.family}{games.product.brand}
           </CardTitle>
           <CardText>
-            This is some text within a card body.
+            
           </CardText>
         </CardBody>
         <ListGroup flush>
           <ListGroupItem>
-            An item
+            
           </ListGroupItem>
           <ListGroupItem>
-            A second item
+            
           </ListGroupItem>
           <ListGroupItem>
             And a third item

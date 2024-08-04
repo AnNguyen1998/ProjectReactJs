@@ -5,8 +5,7 @@ import Register from "./pages/register/Register";
 import NotFound from "./pages/notFound/NotFound";
 import Productdetail from "./pages/productDetail/Productdetail";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./style.css"
-
+import 'animate.css';
 function App() {
   return (
     <div>

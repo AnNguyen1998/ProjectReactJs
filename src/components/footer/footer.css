@@ -1,0 +1,91 @@
+.footer {
+    background-color: #222222;
+    color: white;
+}
+
+.footer-row {
+    border-bottom: 1px solid white;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer p {
+    opacity: .5;
+    margin-top: 10px;
+}
+
+.footer .a {
+    opacity: .5;
+}
+
+.footer .row-d a {
+    margin-top: 5px;
+    font-size: 14px;
+    transition: 1s;
+}
+
+.footer .row-d a:hover {
+    color: #16bcdc;
+    opacity: 1 !important;
+}
+
+.btn-logo {
+    width: 40px;
+    height: 40px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.footer .btn-sub {
+    background-color: #16bcdc;
+}
+
+.footer .input-group {
+    border: none;
+    width: 100%;
+}
+
+.logo-fb {
+    background-color: #0984e3;
+}
+
+.logo-ins {
+    background-color: #e17055;
+}
+
+.logo-mail {
+    background-color: #fab1a0;
+}
+
+.logo-dis {
+    background-color: #a29bfe;
+}
+
+.logo-tiktok {
+    background-color: #b2bec3;
+}
+
+.logo-tele {
+    background-color: #74b9ff;
+}
+
+.footer .animate1:hover {
+    animation: shakeY;
+    animation-duration: 2s;
+}
+.footer .animate2:hover {
+    animation: shakeY;
+    animation-duration: 2s;
+}
+.footer .animate3:hover {
+    animation: shakeY;
+    animation-duration: 2s;
+}
+.footer .animate4:hover {
+    animation: shakeY;
+    animation-duration: 2s;
+}

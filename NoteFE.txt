@@ -90,3 +90,18 @@ Detail game steam api: https://store.steampowered.com/api/appdetails/?appids=730
 Domain Name: AnNguyen1998
 Test: http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json
 Wishlist: https://store.steampowered.com/wishlist/profiles/<userid>/wishlistdata/?p=0
+// this is 
+https://demo-morata.myshopify.com/
+https://techspecs.io/dashboard/
+const options = {
+    method: 'POST',
+    url: 'https://api.techspecs.io/v4/all/products/',
+    params: {page: '0'},
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImN1c19RYkRGZVJzRjY4N3RsUiIsIm1vZXNpZlByaWNpbmdJZCI6InByaWNlXzFNUXF5dkJESWxQbVVQcE1SWUVWdnlLZSIsImlhdCI6MTcyMjc2NDAzMX0.rq_uOk4Tx33QAVEMRs5az1tNEak2NO8NDVqhN-g0zlw',
+      'content-type': 'application/json'
+    },
+    data: {category: ['Smartphones', 'Laptops'], from: '2022-01-30'}
+  };
+  ninja api key : H2vvI+3kTR3XZBmNveI+Pg==LXWjIy075jFnEVVv
