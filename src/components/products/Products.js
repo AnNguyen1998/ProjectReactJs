@@ -1,31 +1,73 @@
 import React, { useEffect, useState } from 'react'
 import Product from "../product/Product"
-import {useDispatch, useSelector} from 'react-redux'
-import { fetchGames } from '../../redux/productSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchProducts } from '../../redux/productSlice'
 import Loading from '../../pages/handlePages/Loading'
 import Errorpage from '../../pages/handlePages/Errorpage'
-import {Container, Row} from 'reactstrap'
+import { Container, Pagination, PaginationItem, PaginationLink, Row } from 'reactstrap'
 
 export default function Products() {
-  const {games, error, status} = useSelector(state => state.products)
+  const { products, error, status } = useSelector(state => state.products)
   const dispatch = useDispatch()
-  useEffect(()=>{
-    if(status === 'start'){
-      dispatch(fetchGames())
+  const [current, setCurrent] = useState(0)
+  const numPage = Math.ceil(products.length / 10)
+  const pageSize = Math.ceil(products.length / numPage)
+  useEffect(() => {
+    if (status === 'start') {
+      dispatch(fetchProducts())
     }
-  },[])
-  console.log(games)
-  if(status === 'loading') return <Loading/>
-  if(status === 'failed') return <Errorpage error = {error}/>
+  }, [])
+  if (status === 'loading') return <Loading />
+  if (status === 'failed') return <Errorpage error={error} />
+  const handle_click = (e, index)=>{
+    e.preventDefault();
+    setCurrent(index)
+  }
+  const handle_pre = (e, index)=>{
+    e.preventDefault();
+    setCurrent(index - 1)
+  }
+  const handle_next = (e, index)=>{
+    e.preventDefault();
+    setCurrent(index + 1)
+  }
   return (
-    <Container fluid='true'>
-      <Row className='p-5'>
+    <Container fluid="true">
+      <Row noGutters='true' style={{padding:'30px'}}>
         {
-          games && games.map((item, index)=>(
-            <Product key={index} games={item}/>
+          products && products.map((item, index) => (
+            <Product key={index} products={item} />
           ))
         }
       </Row>
+      <div style={{display:'flex', justifyContent:'center'}}>
+      <Pagination>
+        <PaginationItem disabled={current <= 0}>
+          <PaginationLink
+            onClick={(e)=>handle_pre(e, current)}
+            href="#"
+            previous
+          />
+        </PaginationItem>
+        {
+          [...Array(numPage)].map((page, i) => (
+            <PaginationItem active={i === current} key={i}>
+              <PaginationLink href="#" onClick={(e)=>handle_click(e, i)}>
+                {i+1}
+              </PaginationLink>
+            </PaginationItem>
+          ))
+
+        }
+        <PaginationItem disabled={current >= numPage - 1}>
+          <PaginationLink
+            onClick={(e)=>handle_next(e, current)}
+            href="#"
+            next
+          />
+        </PaginationItem>
+      </Pagination>
+      </div>
     </Container>
   )
 }
