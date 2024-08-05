@@ -23,7 +23,7 @@ export default function NavbarHidden() {
     },[])
 
   return (
-    <Collapse style={{position:'fixed', top:'0', left:'0px', zIndex:'2', width:'100%', background:'#2b38d1'}} isOpen={isOpen}>
+    <Collapse style={{position:'fixed', top:'0', left:'0px', zIndex:'2', width:'100%', background:'#3dc1d3'}} isOpen={isOpen}>
     <Container className='justify-content-between d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
           <Breadcrumb className='p-1' listTag='div'>
             <BreadcrumbItem>

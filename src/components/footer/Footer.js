@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Col, Collapse, Container, Form, Input, InputGroup, Row, Tooltip } from 'reactstrap'
 import './footer.css'
 import { Link } from 'react-router-dom'
-import { BsPerson } from 'react-icons/bs'
+import { BsArrowUpCircleFill, BsPerson } from 'react-icons/bs'
 import { FaCarSide, FaCreditCard, FaHandHoldingUsd, FaRocketchat } from "react-icons/fa";
 import { BiLogoDiscordAlt, BiLogoFacebook, BiLogoGmail, BiLogoInstagram, BiLogoTelegram, BiLogoTiktok } from "react-icons/bi";
 export default function Footer() {
@@ -29,8 +29,16 @@ export default function Footer() {
   const toggleTool3 = () => setTooltipOpen3(!tooltipOpen3) ;
   const toggleTool4= () => setTooltipOpen4(!tooltipOpen4) ;
   const toggleTool5 = () => setTooltipOpen5(!tooltipOpen5) ;
+  const scrolltoTop = () =>{
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+  });
+  }
   return (
     <div className='footer'>
+      <button onClick={scrolltoTop} className='scrolltotop'><BsArrowUpCircleFill fontSize={60} color='white'/></button>
       <Container>
       <Row noGutters='true' className='p-5 footer-row'>
         <Col lg={3} sm={6}>

@@ -12,7 +12,7 @@ export default function Products() {
   const dispatch = useDispatch()
   const [current, setCurrent] = useState(0)
   const numPage = Math.ceil(products.length / 12)
-  const pageSize = Math.round(products.length / 5)
+  const pageSize = Math.ceil(products.length / 4.5)
   useEffect(() => {
     if (status === 'start') {
       dispatch(fetchProducts())
@@ -38,7 +38,7 @@ export default function Products() {
         <h2>List Products</h2>
         <Breadcrumb>
           <BreadcrumbItem>
-            <Link to='/ProjectReactJs'>
+            <Link style={{color:'#3dc1d3'}} to='/ProjectReactJs'>
               Home
             </Link>
           </BreadcrumbItem>
@@ -57,7 +57,7 @@ export default function Products() {
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Pagination>
           <PaginationItem disabled={current <= 0}>
-            <PaginationLink
+            <PaginationLink style={{border:'1px solid #3dc1d3', color:'#3dc1d3'}}
               onClick={(e) => handle_pre(e, current)}
               href="#"
               previous
@@ -66,7 +66,7 @@ export default function Products() {
           {
             [...Array(numPage)].map((page, i) => (
               <PaginationItem active={i === current} key={i}>
-                <PaginationLink href="#" onClick={(e) => handle_click(e, i)}>
+                <PaginationLink style={{border:'1px solid #3dc1d3', color:'#3dc1d3'}} href="#" onClick={(e) => handle_click(e, i)}>
                   {i + 1}
                 </PaginationLink>
               </PaginationItem>
@@ -74,7 +74,7 @@ export default function Products() {
 
           }
           <PaginationItem disabled={current >= numPage - 1}>
-            <PaginationLink
+            <PaginationLink style={{border:'1px solid #3dc1d3', color:'#3dc1d3'}}
               onClick={(e) => handle_next(e, current)}
               href="#"
               next

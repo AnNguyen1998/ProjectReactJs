@@ -1,9 +1,10 @@
 import React from 'react'
+import Errorpage from '../handlePages/Errorpage'
 
 export default function NotFound() {
   return (
     <div>
-        404
+        <Errorpage/>
     </div>
   )
 }

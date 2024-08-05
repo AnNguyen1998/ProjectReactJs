@@ -1,59 +1,79 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './header.css'
 import LiviLogo from '../../images/LiviLogo.png'
-import { Breadcrumb, BreadcrumbItem, Button, Col, Collapse, Container, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, Nav, Navbar, NavbarBrand, NavbarText, NavbarToggler, NavItem, NavLink, Offcanvas, OffcanvasBody, OffcanvasHeader, Row, UncontrolledDropdown } from 'reactstrap';
+import { Alert, Breadcrumb, BreadcrumbItem, Button, Col, Collapse, Container, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, ListGroup, ListGroupItem, Nav, NavItem, Offcanvas, OffcanvasBody, OffcanvasHeader, Row, UncontrolledDropdown } from 'reactstrap';
 import SearchBox from './SearchBox';
-import { BsBagHeart, BsCart3, BsGift, BsList, BsPeople, BsPerson, BsSearch } from 'react-icons/bs';
+import { BsArrowDownShort, BsBagHeart, BsCart3, BsGift, BsList, BsPeople, BsPerson, BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom'
 import NavbarHidden from './NavbarHidden';
+import CollapseLink from './CollapseLink'
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [canvas, setCanvas] = useState(false)
-  const { navBar } = useRef()
+  const [isLink, setLink] = useState(false)
+  const refcollapse = useRef(null)
   const toggleCanvas = () => setCanvas(!canvas)
   const toggle = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    const element = refcollapse.current
+    console.log(element)
+    const collapseon = () => {
+      setLink(true)
+    }
+    const collapseoff = () =>{
+      setLink(false)
+    }
+    if(refcollapse.current){
+    element.addEventListener('mouseover', collapseon)
+    element.addEventListener('mouseout', collapseoff)
+    return function cleanup(){
+      element.removeEventListener('mouseover', collapseon)
+      element.removeEventListener('mouseout', collapseoff)
+    }
+    }
+  }, [])
 
   return (
     <div className='header font_text'>
       <Container fluid>
         <NavbarHidden />
         <Container>
-        <Row noGutters className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
-          <Col lg={6}>
-            <Breadcrumb listTag="div">
-              <BreadcrumbItem href="#">
-                ENG
-              </BreadcrumbItem>
-              <BreadcrumbItem href="#">
-                US $
-              </BreadcrumbItem>
-              <BreadcrumbItem href="#">
-                Need Help?
-              </BreadcrumbItem>
-            </Breadcrumb>
-          </Col>
-          <Col lg={6} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Breadcrumb listTag="div">
-              <BreadcrumbItem href="#">
-                About Us
-              </BreadcrumbItem>
-              <BreadcrumbItem href="#">
-                Order Tracking
-              </BreadcrumbItem>
-              <BreadcrumbItem href="#">
-                Contact Us
-              </BreadcrumbItem>
-              <BreadcrumbItem>
-                FAQs
-              </BreadcrumbItem>
-            </Breadcrumb>
-          </Col>
-        </Row>
+          <Row noGutters className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
+            <Col lg={6}>
+              <Breadcrumb listTag="div">
+                <BreadcrumbItem href="#">
+                  ENG
+                </BreadcrumbItem>
+                <BreadcrumbItem href="#">
+                  US $
+                </BreadcrumbItem>
+                <BreadcrumbItem href="#">
+                  Need Help?
+                </BreadcrumbItem>
+              </Breadcrumb>
+            </Col>
+            <Col lg={6} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Breadcrumb listTag="div">
+                <BreadcrumbItem href="#">
+                  About Us
+                </BreadcrumbItem>
+                <BreadcrumbItem href="#">
+                  Order Tracking
+                </BreadcrumbItem>
+                <BreadcrumbItem href="#">
+                  Contact Us
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  FAQs
+                </BreadcrumbItem>
+              </Breadcrumb>
+            </Col>
+          </Row>
         </Container>
         <Row style={{ borderBottom: '1px solid rgba(255,255,255,0.4)' }}></Row>
-        <Row className='p-2 d-xl-none d-lg-none d-xl-block'>
+        <Row noGutters className='p-2 d-xl-none d-lg-none d-xl-block'>
           <Col style={{ display: 'flex', justifyContent: 'start' }}>
-            <Button onClick={toggleCanvas} style={{ background: '#2b38d1', border: 'none' }}><BsList fontSize={35} /></Button>
+            <Button onClick={toggleCanvas} style={{ background: '#3dc1d3', border: 'none' }}><BsList fontSize={35} /></Button>
             <div className='canvas'>
               <Offcanvas isOpen={canvas} toggle={toggleCanvas}>
                 <OffcanvasHeader style={{ alignItems: 'center', display: 'flex', justifyContent: 'center' }} toggle={toggleCanvas}>
@@ -80,7 +100,7 @@ export default function Header() {
                         </Breadcrumb>
                       </NavItem>
                       <NavItem>
-                        <Link href="#">
+                        <Link to='/ProjectReactJs'>
                           Home
                         </Link>
                       </NavItem>
@@ -90,9 +110,31 @@ export default function Header() {
                         </Link>
                       </NavItem>
                       <NavItem>
-                        <Link href="#">
-                          Another Link
+                        <Link onClick={toggle}>
+                          Another Link<BsArrowDownShort fontSize={25} />
                         </Link>
+                        <Collapse isOpen={isOpen}>
+                          <ListGroup style={{ marginTop: '10px' }} flush>
+                            <ListGroupItem
+                              href="#"
+                              tag="a"
+                            >
+                              <Link>Link 1</Link>
+                            </ListGroupItem>
+                            <ListGroupItem
+                              href="#"
+                              tag="a"
+                            >
+                              <Link>Link 2</Link>
+                            </ListGroupItem>
+                            <ListGroupItem
+                              href="#"
+                              tag="a"
+                            >
+                              <Link>Link 3</Link>
+                            </ListGroupItem>
+                          </ListGroup>
+                        </Collapse>
                       </NavItem>
                       <NavItem>
                         <Link href="#">
@@ -100,6 +142,7 @@ export default function Header() {
                         </Link>
                       </NavItem>
                     </Nav>
+
                   </strong>
                 </OffcanvasBody>
               </Offcanvas>
@@ -113,37 +156,37 @@ export default function Header() {
           </Col>
         </Row>
         <Container>
-        <Row noGutters style={{ padding: '40px 0px' }}>
-          <Col className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex' xl={3} lg={3}>
-            <a href='#'><img src={LiviLogo} width={200} /></a>
-          </Col>
-          <Col xl={6} lg={6} md={12} sm={12} xs={12} className='p-1' style={{ display: 'flex', justifyContent: 'center' }}>
-            <SearchBox />
-          </Col>
-          <Col xl={3} lg={3} className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex p-2' style={{ overflow: "hidden"}}>
-            <Link href='#' className='icon-la'>
-              <BsPerson style={{ fontSize: '32px' }} />
-              <span className='menu-span'>
-                <span className='l'>Login</span>
-                <span className='a'>Account</span>
-              </span>
-            </Link>
-            <Link href='#' className='icon-la'>
-              <BsBagHeart style={{ fontSize: '32px' }} />
-              <span className='menu-span'>
-                <span className='l'>Favorite</span>
-                <span className='a'>Wishlist</span>
-              </span>
-            </Link>
-            <Link href='#' className='icon-la'>
-              <BsCart3 style={{ fontSize: '32px' }} />
-              <span className='menu-span'>
-                <span className='l'>Cart</span>
-                <span className='a'>Products</span>
-              </span>
-            </Link>
-          </Col>
-        </Row>
+          <Row noGutters style={{ padding: '40px 0px' }}>
+            <Col className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex' xl={3} lg={3}>
+              <a href='#'><img src={LiviLogo} width={200} /></a>
+            </Col>
+            <Col xl={6} lg={6} md={12} sm={12} xs={12} className='p-1' style={{ display: 'flex', justifyContent: 'center' }}>
+              <SearchBox />
+            </Col>
+            <Col xl={3} lg={3} className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex p-2' >
+              <Link href='#' className='icon-la'>
+                <BsPerson style={{ fontSize: '31px' }} />
+                <span className='menu-span'>
+                  <span className='l'>Login</span>
+                  <span className='a'>Account</span>
+                </span>
+              </Link>
+              <Link href='#' className='icon-la'>
+                <BsBagHeart style={{ fontSize: '31px' }} />
+                <span className='menu-span'>
+                  <span className='l'>Favorite</span>
+                  <span className='a'>Wishlist</span>
+                </span>
+              </Link>
+              <Link href='#' className='icon-la'>
+                <BsCart3 style={{ fontSize: '31px' }} />
+                <span className='menu-span'>
+                  <span className='l'>Cart</span>
+                  <span className='a'>Products</span>
+                </span>
+              </Link>
+            </Col>
+          </Row>
         </Container>
         <Row style={{ borderBottom: '1px solid rgba(255,255,255,0.4)' }}></Row>
         <Container className='justify-content-between d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
@@ -166,11 +209,14 @@ export default function Header() {
                     PRODUCTS
                   </Link>
                 </NavItem>
+                <div ref={refcollapse}>
                 <NavItem style={{ marginRight: '40px' }}>
-                  <Link href="#">
-                    UNKNOW
-                  </Link>
+                  <Link>CATEGORY <BsArrowDownShort fontSize={25} /></Link>
+                  <div className='list-link'>
+                    <CollapseLink isLink={isLink} />
+                  </div>
                 </NavItem>
+                </div>
                 <NavItem style={{ marginRight: '40px' }}>
                   <Link href="#">
                     BLOG

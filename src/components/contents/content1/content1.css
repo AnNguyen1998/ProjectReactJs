@@ -6,7 +6,7 @@
     border-radius: 50px;
 }
 .img-content11:hover{
-    transform: scale(2);
+    transform: scale(1.2);
     transition: 1s;
 }
 .contain-1{
@@ -25,4 +25,7 @@
 .btn-disco:hover{
     background-color: #e74c3c !important;
     transition: 1.5s;
+}
+.w-100{
+    height: 350px;
 }
