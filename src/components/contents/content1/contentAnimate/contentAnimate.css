@@ -1,0 +1,31 @@
+.animate-a {
+    animation: run 10s linear infinite;
+}
+.coverAni{
+    position: relative;
+    height: 20px;
+    padding: 5px;
+    overflow: hidden;
+}
+.divAni1{
+    position: absolute;
+    top: -5px;
+}
+.divAni2{
+    position: absolute;
+    top: -5px;
+    right: -74vw;
+}
+.pause-ani:hover .animate-a{
+    animation-play-state: paused;
+}
+
+@keyframes run {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-75%);
+    }
+}

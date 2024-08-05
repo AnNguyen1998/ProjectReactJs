@@ -105,3 +105,5 @@ const options = {
     data: {category: ['Smartphones', 'Laptops'], from: '2022-01-30'}
   };
   ninja api key : H2vvI+3kTR3XZBmNveI+Pg==LXWjIy075jFnEVVv
+
+  use use use : https://fakeapi.platzi.com/

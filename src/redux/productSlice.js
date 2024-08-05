@@ -7,22 +7,10 @@ const initialState={
     status:'start',
     error:null
 }
-
-const options = {
-    method: 'POST',
-    url: 'https://api.techspecs.io/v4/all/products/',
-    params: {page: '0'},
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImN1c19RYkRGZVJzRjY4N3RsUiIsIm1vZXNpZlByaWNpbmdJZCI6InByaWNlXzFNUXF5dkJESWxQbVVQcE1SWUVWdnlLZSIsImlhdCI6MTcyMjc2NDAzMX0.rq_uOk4Tx33QAVEMRs5az1tNEak2NO8NDVqhN-g0zlw',
-      'content-type': 'application/json'
-    },
-    data: {category: ['Smartphones', 'Laptops'], from: '2022-01-30'}
-  };
-  
+const url = 'https://api.escuelajs.co/api/v1/products'
 export const fetchProducts = createAsyncThunk("products/fetchGames", async ()=>{
-    const response = await axios.request(options)
-    return response.data.data.items
+    const response = await axios.get(url)
+    return response.data
 })
 
 const productSlice = createSlice({
@@ -38,7 +26,7 @@ const productSlice = createSlice({
         })
         .addCase(fetchProducts.fulfilled,(state, action)=>{
             state.status = 'succeeded'
-            state.games = action.payload
+            state.products = action.payload
         })
         .addCase(fetchProducts.rejected,(state, action)=>{
             state.status = 'failed'

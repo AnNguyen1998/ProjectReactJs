@@ -1,0 +1,28 @@
+
+.carousel{
+    border-radius: 50px;
+}
+.carousel-inner{
+    border-radius: 50px;
+}
+.img-content11:hover{
+    transform: scale(2);
+    transition: 1s;
+}
+.contain-1{
+    position: relative;
+}
+.btn-disco{
+    position: absolute;
+    z-index: 1;
+    top: 70%;
+    left: 15%;
+    height: 50px;
+    width: 160px;
+    background-color: black !important;
+    font-size: 14px !important;
+}
+.btn-disco:hover{
+    background-color: #e74c3c !important;
+    transition: 1.5s;
+}

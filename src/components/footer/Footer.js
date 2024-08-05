@@ -31,8 +31,9 @@ export default function Footer() {
   const toggleTool5 = () => setTooltipOpen5(!tooltipOpen5) ;
   return (
     <div className='footer'>
-      <Row noGutters='true' className='p-4 footer-row'>
-        <Col lg={3} sm={6} >
+      <Container>
+      <Row noGutters='true' className='p-5 footer-row'>
+        <Col lg={3} sm={6}>
           <Link href='#' className='icon-la'>
             <div class="animate1">
               <FaCarSide style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -43,7 +44,7 @@ export default function Footer() {
             </span>
           </Link>
         </Col>
-        <Col lg={3} sm={6} >
+        <Col lg={3} sm={6}>
           <Link href='#' className='icon-la'>
             <div class="animate2">
               <FaCreditCard style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -54,7 +55,7 @@ export default function Footer() {
             </span>
           </Link>
         </Col>
-        <Col lg={3} sm={6} >
+        <Col lg={3} sm={6}>
           <Link href='#' className='icon-la'>
             <div class="animate3">
               <FaRocketchat style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -65,7 +66,7 @@ export default function Footer() {
             </span>
           </Link>
         </Col>
-        <Col lg={3} sm={6} >
+        <Col lg={3} sm={6}>
           <Link href='#' className='icon-la'>
             <div class="animate4">
               <FaHandHoldingUsd style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -77,8 +78,9 @@ export default function Footer() {
           </Link>
         </Col>
       </Row>
-      <Row className='row-d' noGutters='true' style={{ padding: '50px 50px', margin: '0px 50px' }}>
-        <Col lg={3} md={6} sm={12}>
+      </Container>
+      <Row className='row-d' noGutters='true' style={{ padding: '50px 50px', margin: '0px 50px', borderBottom:'1px solid rgba(255,255,255,0.4)' }}>
+        <Col lg={3} md={6} sm={6}>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle}>
             Information
           </h5>
@@ -135,7 +137,7 @@ export default function Footer() {
             </Tooltip>
           </Collapse>
         </Col>
-        <Col lg={2} md={6} sm={12}>
+        <Col lg={2} md={6} sm={6}>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle1}>
             My Account
           </h5>
@@ -150,7 +152,7 @@ export default function Footer() {
             </div>
           </Collapse>
         </Col>
-        <Col lg={2} md={6} sm={12}>
+        <Col lg={2} md={6} sm={6}>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle2}>
             Customer Service
           </h5>
@@ -165,7 +167,7 @@ export default function Footer() {
             </div>
           </Collapse>
         </Col>
-        <Col lg={2} md={6} sm={12}>
+        <Col lg={2} md={6} sm={6}>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle3}>
             Help & Customer Care
           </h5>
@@ -180,7 +182,7 @@ export default function Footer() {
             </div>
           </Collapse>
         </Col>
-        <Col lg={3} md={6} sm={12}>
+        <Col lg={3} md={6} sm={6}>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle4}>
             Sign Up To Newsletter
           </h5>
@@ -198,6 +200,9 @@ export default function Footer() {
           </Collapse>
         </Col>
       </Row>
+      <Container style={{textAlign:'center', padding:'5px'}}>
+        <p>Make by <Link>AnNguyen</Link></p>
+      </Container>
     </div>
   )
 }
