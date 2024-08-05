@@ -15,14 +15,14 @@ export default function SearchBox() {
                         All Categories
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem header>
-                            Header
+                        <DropdownItem >
+                            Smartphones
                         </DropdownItem>
-                        <DropdownItem disabled>
-                            Action
+                        <DropdownItem >
+                            Laptops
                         </DropdownItem>
                         <DropdownItem>
-                            Another Action
+                            Cloths
                         </DropdownItem>
                     </DropdownMenu>
                 </ButtonDropdown>

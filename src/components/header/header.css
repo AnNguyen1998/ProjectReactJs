@@ -1,5 +1,5 @@
 .header{
-    background-color: #2b38d1;
+    background-color: #3dc1d3;
 }
 .container{
     color: white !important;
@@ -42,14 +42,14 @@
 }
 .breadcrumb-item .btn-sort{
     color: white;
-    background-color: #2b38d1;
+    background-color: #3dc1d3;
     border: none;
     position: relative;
 }
 .breadcrumb-item .btn-sort::after{
     content: '';
     position: absolute;
-    border-top: 2px solid #16bcdc;
+    border-top: 2px solid #546de5;
     width: 0%;
     top: -9px;
     left: 0;
@@ -58,7 +58,7 @@
 .breadcrumb-item .btn-sort:hover::after{
     content: '';
     position: absolute;
-    border-top: 2px solid #16bcdc;
+    border-top: 2px solid #546de5;
     width: 100%;
     top: -9px;
     left: 0;
@@ -86,8 +86,16 @@ strong .nav-item::after{
     border-bottom: 1px solid black;
 }
 .header .nav-item:hover a{
-    color: tomato;
+    color: #546de5;
     transition: 1s;
 }
+.list-link{
+    background-color: #3dc1d3 !important;
+    z-index: 10;
+    position: absolute;
+    top: 40px;
+    transition: 1s;
+}
+
 
 

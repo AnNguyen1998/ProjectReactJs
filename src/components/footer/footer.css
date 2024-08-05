@@ -1,10 +1,29 @@
 .footer {
     background-color: #222222;
     color: white;
+    position: relative;
+}
+
+.scrolltotop {
+    background-color: #0984e3;
+    border: none;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+}
+
+.scrolltotop:hover {
+    animation: shakeY infinite;
+    animation-duration: 2s;
 }
 
 .footer-row {
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.footer-row .col-sm-6{
+    display: flex;
+    justify-content: center;
 }
 
 .footer a {
@@ -77,14 +96,17 @@
     animation: shakeY;
     animation-duration: 2s;
 }
+
 .footer .animate2:hover {
     animation: shakeY;
     animation-duration: 2s;
 }
+
 .footer .animate3:hover {
     animation: shakeY;
     animation-duration: 2s;
 }
+
 .footer .animate4:hover {
     animation: shakeY;
     animation-duration: 2s;
