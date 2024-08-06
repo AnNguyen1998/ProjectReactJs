@@ -1,0 +1,16 @@
+.btn-detail{
+    padding: 15px !important;
+    background-color: #f8a5c2 !important;
+    border: none !important;
+    border-radius: 30px !important;
+}
+.btn-add{
+    padding: 15px !important;
+    background-color: #63cdda !important;
+    border: none !important;
+    border-radius: 30px !important;
+}
+.btn-add:hover{
+    animation: tada 2s infinite;
+    background-color: #3dc1d3;
+}

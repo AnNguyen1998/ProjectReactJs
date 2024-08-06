@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useState } from "react";
 
 const initialState={
     products:[],
@@ -17,7 +16,7 @@ const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers:{
-
+        
     },
     extraReducers:(builder)=>{
         builder

@@ -7,6 +7,7 @@ import { BsArrowDownShort, BsBagHeart, BsCart3, BsGift, BsList, BsPeople, BsPers
 import { Link } from 'react-router-dom'
 import NavbarHidden from './NavbarHidden';
 import CollapseLink from './CollapseLink'
+import { useSelector } from 'react-redux';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [canvas, setCanvas] = useState(false)
@@ -16,7 +17,6 @@ export default function Header() {
   const toggle = () => setIsOpen(!isOpen);
   useEffect(() => {
     const element = refcollapse.current
-    console.log(element)
     const collapseon = () => {
       setLink(true)
     }
@@ -32,7 +32,7 @@ export default function Header() {
     }
     }
   }, [])
-
+  const {num} = useSelector(state=>state.carts)
   return (
     <div className='header font_text'>
       <Container fluid>
@@ -71,7 +71,7 @@ export default function Header() {
           </Row>
         </Container>
         <Row style={{ borderBottom: '1px solid rgba(255,255,255,0.4)' }}></Row>
-        <Row noGutters className='p-2 d-xl-none d-lg-none d-xl-block'>
+        <Row noGutters className='p-2 d-xl-none d-lg-none d-xl-block mt-3'>
           <Col style={{ display: 'flex', justifyContent: 'start' }}>
             <Button onClick={toggleCanvas} style={{ background: '#3dc1d3', border: 'none' }}><BsList fontSize={35} /></Button>
             <div className='canvas'>
@@ -152,13 +152,13 @@ export default function Header() {
             <a href='#'><img src={LiviLogo} width={150} /></a>
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', transform: 'translateX(14px)' }} className='d-xl-none d-lg-none d-xl-block'>
-            <BsCart3 style={{ fontSize: '35px', color: 'white' }} />
+            <Link to='/cart'><BsCart3 style={{ fontSize: '35px', color: 'white'}} /></Link>
           </Col>
         </Row>
         <Container>
           <Row noGutters style={{ padding: '40px 0px' }}>
             <Col className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex' xl={3} lg={3}>
-              <a href='#'><img src={LiviLogo} width={200} /></a>
+              <Link to='/ProjectReactJs'><img src={LiviLogo} width={200} /></Link>
             </Col>
             <Col xl={6} lg={6} md={12} sm={12} xs={12} className='p-1' style={{ display: 'flex', justifyContent: 'center' }}>
               <SearchBox />
@@ -178,8 +178,9 @@ export default function Header() {
                   <span className='a'>Wishlist</span>
                 </span>
               </Link>
-              <Link href='#' className='icon-la'>
+              <Link to='/cart' className='icon-la'>
                 <BsCart3 style={{ fontSize: '31px' }} />
+                <p className='num-cart'>{num}</p>
                 <span className='menu-span'>
                   <span className='l'>Cart</span>
                   <span className='a'>Products</span>

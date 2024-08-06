@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './contentAnimate.css'
 export default function ContentAnimate() {
     return (
-        <Container className='pause-ani' style={{ background: '#546de5', padding: '20px' }} fluid>
+        <Container className='pause-ani' style={{ background: '#f8a5c2', padding: '20px' }} fluid>
             <div className='d-flex coverAni'>
                 <div className='animate-a' style={{width:'100%'}}>
                     <div className='d-flex divAni1'>

@@ -1,0 +1,23 @@
+.contain-detail h2{
+    color:#636e72 !important;
+}
+.contain-detail p{
+    color: #636e72 !important;
+}
+.contain-detail .h2-fre{
+    position: relative;
+}
+.contain-detail .h2-fre::after{
+    content: '';
+    position: absolute;
+    width: 32%;
+    border: 1px solid #ee5253;
+    bottom: -5px;
+    right: 34%;
+}
+.contain-detail a{
+    color: #636e72 !important;
+}
+.contain-detail .active a{
+    color: #0abde3 !important;
+}

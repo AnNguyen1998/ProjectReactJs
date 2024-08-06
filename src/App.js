@@ -6,6 +6,8 @@ import NotFound from "./pages/notFound/NotFound";
 import Productdetail from "./pages/productDetail/Productdetail";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
+import SearchPage from "./pages/searchPage/SearchPage";
+import CartPage from "./pages/cartPage/CartPage";
 function App() {
   return (
     <div>
@@ -18,6 +20,8 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/404" element={<NotFound/>}/>
           <Route path="*" element={<NotFound/>}/>
+          <Route path="/search" element={<SearchPage/>}/>
+          <Route path="/cart" element={<CartPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>
