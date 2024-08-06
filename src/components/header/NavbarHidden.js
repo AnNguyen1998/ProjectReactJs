@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { BsArrowUpCircleFill, BsGift, BsList } from 'react-icons/bs'
+import { BsArrowDownShort, BsArrowUpCircleFill, BsGift, BsList } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, Collapse, Container, Nav, NavItem } from 'reactstrap'
+import CollapseLink from './CollapseLink'
 
 export default function NavbarHidden() {
     const [isOpen, setIsOpen] = useState(false)
+    const [isLink, setLink] = useState(false)
+    const refcollapse = useRef(null)
     const btnref = useRef()
     useEffect(()=>{
         function stickNavbar(){
@@ -23,6 +26,23 @@ export default function NavbarHidden() {
         window.addEventListener('scroll', stickNavbar)
         return ()=> window.removeEventListener('scroll', stickNavbar) 
     },[])
+    useEffect(() => {
+      const element = refcollapse.current
+      const collapseon = () => {
+        setLink(true)
+      }
+      const collapseoff = () => {
+        setLink(false)
+      }
+      if (refcollapse.current) {
+        element.addEventListener('mouseover', collapseon)
+        element.addEventListener('mouseout', collapseoff)
+        return function cleanup() {
+          element.removeEventListener('mouseover', collapseon)
+          element.removeEventListener('mouseout', collapseoff)
+        }
+      }
+    }, [])
     const scrolltoTop = () =>{
       window.scrollTo({
         top: 0,
@@ -54,11 +74,16 @@ export default function NavbarHidden() {
                     PRODUCTS
                   </Link>
                 </NavItem>
+                <div ref={refcollapse}>
                 <NavItem style={{ marginRight: '40px' }}>
                   <Link href="#">
-                    UNKNOW
+                    CATEGORIES<BsArrowDownShort fontSize={25} />
                   </Link>
+                  <div className='list-link'>
+                      <CollapseLink isLink={isLink} />
+                    </div>
                 </NavItem>
+                </div>
                 <NavItem style={{ marginRight: '40px' }}>
                   <Link href="#">
                     BLOG

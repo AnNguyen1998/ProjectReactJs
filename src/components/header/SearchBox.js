@@ -6,9 +6,10 @@ import { addName, fetchSearchProducts } from '../../redux/searchTitleSlice'
 import Loading from '../../pages/handlePages/Loading'
 import Errorpage from '../../pages/handlePages/Errorpage'
 import { useDispatch, useSelector } from 'react-redux'
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 
 export default function SearchBox() {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { status, error } = useSelector(state => state.productSearch)
     const [text, setText] = useState('')
@@ -17,11 +18,10 @@ export default function SearchBox() {
         setDropstate(!dropstate)
     }
     const search = (text) => {
-        if (status === 'start') {
+        
             dispatch(fetchSearchProducts(text))
             dispatch(addName(text))
             setText('')
-        }
     }
     if (status === 'loading') return <Loading />
     if (status === 'failed') return <Errorpage error={error} />
@@ -41,6 +41,7 @@ export default function SearchBox() {
                         onChange={(e) => setText(e.target.value)} onKeyDown={(e) => {
                             if (e.key === "Enter" && text.trim()) {
                                 search(text)
+                                navigate('/search', {relative:'path'})
                                 setText('')
                             }
                         }} />

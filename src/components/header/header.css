@@ -112,6 +112,13 @@ strong .nav-item::after{
     font-size: 25px;
     color: #c44569;
 }
+.num-cart1{
+    position: absolute;
+    right: 30px;
+    bottom: -15px;
+    font-size: 25px;
+    color: #c44569;
+}
 
 
 

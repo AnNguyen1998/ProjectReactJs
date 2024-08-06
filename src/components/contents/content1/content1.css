@@ -1,6 +1,8 @@
 
 .carousel{
     border-radius: 50px;
+    width: 100% !important;
+    z-index: -1;
 }
 .carousel-inner{
     border-radius: 50px;
@@ -15,8 +17,8 @@
 .btn-disco{
     position: absolute;
     z-index: 1;
-    top: 70%;
-    left: 15%;
+    top: 80%;
+    left: 23%;
     height: 50px;
     width: 160px;
     background-color: black !important;
@@ -25,6 +27,7 @@
 .btn-disco:hover{
     background-color: #e74c3c !important;
     transition: 1.5s;
+    animation: tada 3s infinite;
 }
 .w-100{
     height: 350px;
