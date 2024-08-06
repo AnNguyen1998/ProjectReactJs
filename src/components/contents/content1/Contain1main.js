@@ -1,26 +1,32 @@
-import React from 'react'
-import { Col, Row } from 'reactstrap'
-import Content1 from './Content1'
+import React, { useEffect } from 'react'
+import { Col, Container, Row } from 'reactstrap'
 import Content11 from './Content11'
+import { useDispatch, useSelector } from 'react-redux'
+import SliderContent1 from '../content1/SliderContent1'
+import { fetchProducts } from '../../../redux/productSlice'
 
 export default function Contain1main() {
-    const urlimg = ['https://picsum.photos/id/123/1200/400',
-                    'https://picsum.photos/id/456/1200/400',
-                    'https://picsum.photos/id/678/1200/400',
-                    'https://picsum.photos/id/123/1200/400'
-                    ]
+    const { products } = useSelector(state => state.products)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [])
     return (
-        <div className='contain-main' style={{ padding: '15px 50px'}}>
+        <Container>
             <Row className='p-3'>
-                <Col lg={6} style={{display:'flex', justifyContent:'center'}}>
-                    <Content1/>
+                <Col lg={6} style={{ display: 'flex', justifyContent: 'end', marginTop:'20px' }}>
+                    <SliderContent1 product={products[9]} />
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} style={{marginTop:'30px'}}>
                     <Row>
-                        <Content11 url={urlimg}/>
+                        {
+                            products && products.slice(8, 12).map((item, index) => (
+                                <Content11 key={index} prod={item} />
+                            ))
+                        }
                     </Row>
                 </Col>
             </Row>
-        </div>
+        </Container>
     )
 }

@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Breadcrumb, BreadcrumbItem, Button, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
+import { Breadcrumb, BreadcrumbItem, Button, ButtonGroup, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import './cart.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { countNum, delItemCart } from '../../redux/cartSlice'
 
 export default function Cart() {
-    const { carts } = useSelector(state => state.carts)
+    const { carts, num } = useSelector(state => state.carts)
+    const dispatch = useDispatch()
+    const delItem = (id) => {
+        dispatch(delItemCart(id))
+        dispatch(countNum())
+    }
     return (
         <Container className='mb-4 contain-cart'>
             <div className='title' style={{ borderBottom: '1px solid #dfe6e9' }}>
@@ -19,9 +25,11 @@ export default function Cart() {
                         Search
                     </BreadcrumbItem>
                 </Breadcrumb>
-                <h2>{ } IN YOUR CART</h2>
+                {
+                    num <= 0 ? <h2>NOTHING IN YOUR CART</h2> : <h2>{num} PRODUCTS IN YOUR CART</h2>
+                }
             </div>
-            <Row>
+            <Row className='p-3'>
                 {
                     carts && carts.map((item, index) => (
                         <Col key={index} xl={3} lg={3} md={4} sm={6} xs={12} className='p-3'>
@@ -37,14 +45,19 @@ export default function Cart() {
                                             {item.title}
                                         </div>
                                     </CardTitle>
-                                    <CardText style={{marginTop:'50px'}}>
+                                    <CardText style={{ marginTop: '50px' }}>
                                         <h4>{item.price} $</h4>
                                     </CardText>
                                     <CardText className='d-flex justify-content-between'>
                                         <Link to={'/detail/' + item.id}>
                                             <Button className='btn-detail'>Detail</Button>
                                         </Link>
-                                        <Button className='btn-add'>Delete</Button>
+                                        <ButtonGroup style={{ width: '100px' }}>
+                                            <Button style={{ width: '30%', padding: '15px', borderRadius: '30px 0 0 30px' }}>-</Button>
+                                            <Button>1</Button>
+                                            <Button style={{ width: '30%', padding: '15px', borderRadius: '0 30px 30px 0' }}>+</Button>
+                                        </ButtonGroup>
+                                        <Button className='btn-add' onClick={() => delItem(item.id)}>Delete</Button>
                                     </CardText>
                                 </CardBody>
                             </Card>

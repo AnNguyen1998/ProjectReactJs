@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button, Card, CardBody, CardText, CardTitle, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import { useDispatch } from 'react-redux'
 import './product.css'
-import { addCart } from '../../redux/cartSlice'
+import { addCart, countNum } from '../../redux/cartSlice'
 export default function Product(props) {
   const [anim, setAnim] = useState(false)
   const dispatch = useDispatch()
@@ -12,10 +12,11 @@ export default function Product(props) {
   const onAnim = (prod)=>{
     setAnim(!anim)
     dispatch(addCart(prod))
+    dispatch(countNum())
   }
   return (
     <Col xl={2} lg={3} md={4} sm={6} xs={12} className='p-3'>
-      <Card style={{height:'500px'}} className={anim?'animate__animated animate__pulse':""}>
+      <Card style={{height:'550px'}} className={anim?'animate__animated animate__pulse':""}>
         <img
           alt="Card"
           src={products.images[0]}
@@ -27,7 +28,7 @@ export default function Product(props) {
             {products.title}
             </div>
           </CardTitle>
-          <CardText style={{marginTop:'50px'}}>
+          <CardText style={{marginTop:'80px'}}>
             <h4>{products.price} $</h4>
           </CardText>
           <CardText className='d-flex justify-content-between'>

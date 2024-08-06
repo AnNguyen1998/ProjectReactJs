@@ -3,21 +3,27 @@ import { Link } from 'react-router-dom'
 import { ListGroup, Collapse, ListGroupItem, DropdownMenu, DropdownItem, Dropdown } from 'reactstrap'
 import './collapseLink.css'
 import { BsArrowRightShort } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 export default function CollapseLink(props) {
   const { isLink } = props
   const [dropdownOpen, setOpen] = useState(false)
-
+  const {categories} = useSelector(state=>state.categories)
   const toggle = () => setOpen((prevState) => !prevState)
   return (
     <Collapse isOpen={isLink}>
       <ListGroup className='list-link1' flush>
-        <ListGroupItem
+        {
+          categories&&categories.map((item, index)=>(
+            <ListGroupItem
           disabled
           href="#"
           tag="a"
+          key={index}
         >
-          Smartphones
+          {item.name}
         </ListGroupItem>
+          ))
+        }
         <ListGroupItem
           href="#"
           tag="a"
@@ -43,24 +49,6 @@ export default function CollapseLink(props) {
             </DropdownMenu>
             </div>
           </Dropdown>
-        </ListGroupItem>
-        <ListGroupItem
-          href="#"
-          tag="a"
-        >
-          CPUs
-        </ListGroupItem>
-        <ListGroupItem
-          href="#"
-          tag="a"
-        >
-          Cloths
-        </ListGroupItem>
-        <ListGroupItem
-          href="#"
-          tag="a"
-        >
-          Shoes
         </ListGroupItem>
       </ListGroup>
     </Collapse>

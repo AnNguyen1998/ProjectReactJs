@@ -21,7 +21,7 @@ export default function Search() {
                 </Breadcrumb>
                 <h2>{productSearch.length} RESULT FOR "{name}"</h2>
             </div>
-            <Row>
+            <Row className='p-3'>
                 {
                     productSearch && productSearch.map((item, index) => (
                         <Col key={index} xl={3} lg={3} md={4} sm={6} xs={12} className='p-3'>

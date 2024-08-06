@@ -15,24 +15,40 @@ export default function Header() {
   const refcollapse = useRef(null)
   const toggleCanvas = () => setCanvas(!canvas)
   const toggle = () => setIsOpen(!isOpen);
+  const { categories } = useSelector(state => state.categories)
   useEffect(() => {
     const element = refcollapse.current
     const collapseon = () => {
       setLink(true)
     }
-    const collapseoff = () =>{
+    const collapseoff = () => {
       setLink(false)
     }
-    if(refcollapse.current){
-    element.addEventListener('mouseover', collapseon)
-    element.addEventListener('mouseout', collapseoff)
-    return function cleanup(){
-      element.removeEventListener('mouseover', collapseon)
-      element.removeEventListener('mouseout', collapseoff)
-    }
+    if (refcollapse.current) {
+      element.addEventListener('mouseover', collapseon)
+      element.addEventListener('mouseout', collapseoff)
+      return function cleanup() {
+        element.removeEventListener('mouseover', collapseon)
+        element.removeEventListener('mouseout', collapseoff)
+      }
     }
   }, [])
-  const {num} = useSelector(state=>state.carts)
+  const { num } = useSelector(state => state.carts)
+  const numref = useRef()
+  const refnum1 = useRef()
+  useEffect(() => {
+    if (num <= 0) {
+      numref.current.style.display = 'none'
+    } else {
+      numref.current.style.display = 'block'
+    }
+    if (num <= 0) {
+      refnum1.current.style.display = 'none'
+    } else {
+      refnum1.current.style.display = 'block'
+    }
+  }, [num])
+
   return (
     <div className='header font_text'>
       <Container fluid>
@@ -111,28 +127,21 @@ export default function Header() {
                       </NavItem>
                       <NavItem>
                         <Link onClick={toggle}>
-                          Another Link<BsArrowDownShort fontSize={25} />
+                          Categories<BsArrowDownShort fontSize={25} />
                         </Link>
                         <Collapse isOpen={isOpen}>
                           <ListGroup style={{ marginTop: '10px' }} flush>
-                            <ListGroupItem
-                              href="#"
-                              tag="a"
-                            >
-                              <Link>Link 1</Link>
-                            </ListGroupItem>
-                            <ListGroupItem
-                              href="#"
-                              tag="a"
-                            >
-                              <Link>Link 2</Link>
-                            </ListGroupItem>
-                            <ListGroupItem
-                              href="#"
-                              tag="a"
-                            >
-                              <Link>Link 3</Link>
-                            </ListGroupItem>
+                            {
+                              categories && categories.map((item, index) => (
+                                <ListGroupItem
+                                  href="#"
+                                  tag="a"
+                                  key={index}
+                                >
+                                  <Link>{item.name}</Link>
+                                </ListGroupItem>
+                              ))
+                            }
                           </ListGroup>
                         </Collapse>
                       </NavItem>
@@ -152,7 +161,7 @@ export default function Header() {
             <a href='#'><img src={LiviLogo} width={150} /></a>
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', transform: 'translateX(14px)' }} className='d-xl-none d-lg-none d-xl-block'>
-            <Link to='/cart'><BsCart3 style={{ fontSize: '35px', color: 'white'}} /></Link>
+            <Link to='/cart'><BsCart3 style={{ fontSize: '35px', color: 'white' }} /></Link><p ref={numref} className='num-cart1'>{num}</p>
           </Col>
         </Row>
         <Container>
@@ -180,7 +189,7 @@ export default function Header() {
               </Link>
               <Link to='/cart' className='icon-la'>
                 <BsCart3 style={{ fontSize: '31px' }} />
-                <p className='num-cart'>{num}</p>
+                <p ref={refnum1} className='num-cart'>{num}</p>
                 <span className='menu-span'>
                   <span className='l'>Cart</span>
                   <span className='a'>Products</span>
@@ -211,12 +220,12 @@ export default function Header() {
                   </Link>
                 </NavItem>
                 <div ref={refcollapse}>
-                <NavItem style={{ marginRight: '40px' }}>
-                  <Link>CATEGORY <BsArrowDownShort fontSize={25} /></Link>
-                  <div className='list-link'>
-                    <CollapseLink isLink={isLink} />
-                  </div>
-                </NavItem>
+                  <NavItem style={{ marginRight: '40px' }}>
+                    <Link>CATEGORIES <BsArrowDownShort fontSize={25} /></Link>
+                    <div className='list-link'>
+                      <CollapseLink isLink={isLink} />
+                    </div>
+                  </NavItem>
                 </div>
                 <NavItem style={{ marginRight: '40px' }}>
                   <Link href="#">
