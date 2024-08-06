@@ -10,7 +10,7 @@ export default function CollapseLink(props) {
   const toggle = () => setOpen((prevState) => !prevState)
   return (
     <Collapse isOpen={isLink}>
-      <ListGroup flush>
+      <ListGroup className='list-link1' flush>
         <ListGroupItem
           disabled
           href="#"

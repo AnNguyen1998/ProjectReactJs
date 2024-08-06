@@ -107,3 +107,4 @@ const options = {
   ninja api key : H2vvI+3kTR3XZBmNveI+Pg==LXWjIy075jFnEVVv
 
   use use use : https://fakeapi.platzi.com/
+  https://demo-morata.myshopify.com/collections/all

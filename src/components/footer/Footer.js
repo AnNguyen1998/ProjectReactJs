@@ -29,19 +29,12 @@ export default function Footer() {
   const toggleTool3 = () => setTooltipOpen3(!tooltipOpen3) ;
   const toggleTool4= () => setTooltipOpen4(!tooltipOpen4) ;
   const toggleTool5 = () => setTooltipOpen5(!tooltipOpen5) ;
-  const scrolltoTop = () =>{
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-  });
-  }
+  
   return (
     <div className='footer'>
-      <button onClick={scrolltoTop} className='scrolltotop'><BsArrowUpCircleFill fontSize={60} color='white'/></button>
       <Container>
       <Row noGutters='true' className='p-5 footer-row'>
-        <Col lg={3} sm={6}>
+        <Col lg={3} sm={6} className='mt-3'>
           <Link href='#' className='icon-la'>
             <div class="animate1">
               <FaCarSide style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -52,7 +45,7 @@ export default function Footer() {
             </span>
           </Link>
         </Col>
-        <Col lg={3} sm={6}>
+        <Col lg={3} sm={6} className='mt-3'>
           <Link href='#' className='icon-la'>
             <div class="animate2">
               <FaCreditCard style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -63,7 +56,7 @@ export default function Footer() {
             </span>
           </Link>
         </Col>
-        <Col lg={3} sm={6}>
+        <Col lg={3} sm={6} className='mt-3'>
           <Link href='#' className='icon-la'>
             <div class="animate3">
               <FaRocketchat style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -74,7 +67,7 @@ export default function Footer() {
             </span>
           </Link>
         </Col>
-        <Col lg={3} sm={6}>
+        <Col lg={3} sm={6} className='mt-3'>
           <Link href='#' className='icon-la'>
             <div class="animate4">
               <FaHandHoldingUsd style={{ fontSize: '40px', color: '#16bcdc' }} />
@@ -88,14 +81,14 @@ export default function Footer() {
       </Row>
       </Container>
       <Row className='row-d' noGutters='true' style={{ padding: '50px 50px', margin: '0px 50px', borderBottom:'1px solid rgba(255,255,255,0.4)' }}>
-        <Col lg={3} md={6} sm={6}>
+        <Col lg={3} md={6} sm={6} className='mt-3'>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle}>
             Information
           </h5>
           <Collapse isOpen={isOpen}>
             <p>This website is built with reactjs.</p>
             <p>Contact us</p>
-            <button id='fb' className='btn-logo logo-fb'><BiLogoFacebook /></button>
+            <button id='fb' className='btn-logo logo-fb mt-2'><BiLogoFacebook /></button>
             <Tooltip
               isOpen={tooltipOpen}
               target="fb"
@@ -103,7 +96,7 @@ export default function Footer() {
             >
               FaceBook
             </Tooltip>
-            <button id='mail' className='btn-logo logo-mail'><BiLogoGmail /></button>
+            <button id='mail' className='btn-logo logo-mail mt-2'><BiLogoGmail /></button>
             <Tooltip
               isOpen={tooltipOpen1}
               target="mail"
@@ -111,7 +104,7 @@ export default function Footer() {
             >
               Mail
             </Tooltip>
-            <button id='ins' className='btn-logo logo-ins'><BiLogoInstagram /></button>
+            <button id='ins' className='btn-logo logo-ins mt-2'><BiLogoInstagram /></button>
             <Tooltip
               isOpen={tooltipOpen2}
               target="ins"
@@ -119,7 +112,7 @@ export default function Footer() {
             >
               Instagram
             </Tooltip>
-            <button id='dis' className='btn-logo logo-dis'><BiLogoDiscordAlt /></button>
+            <button id='dis' className='btn-logo logo-dis mt-2'><BiLogoDiscordAlt /></button>
             <Tooltip
               isOpen={tooltipOpen3}
               target="dis"
@@ -127,7 +120,7 @@ export default function Footer() {
             >
               Discord
             </Tooltip>
-            <button id='tele' className='btn-logo logo-tele'><BiLogoTelegram /></button>
+            <button id='tele' className='btn-logo logo-tele mt-2'><BiLogoTelegram /></button>
             <Tooltip
               isOpen={tooltipOpen4}
               target="tele"
@@ -135,7 +128,7 @@ export default function Footer() {
             >
               Telegram
             </Tooltip>
-            <button id='tiktok' className='btn-logo logo-tiktok'><BiLogoTiktok /></button>
+            <button id='tiktok' className='btn-logo logo-tiktok mt-2'><BiLogoTiktok /></button>
             <Tooltip
               isOpen={tooltipOpen5}
               target="tiktok"
@@ -145,7 +138,7 @@ export default function Footer() {
             </Tooltip>
           </Collapse>
         </Col>
-        <Col lg={2} md={6} sm={6}>
+        <Col lg={2} md={6} sm={6} className='mt-3'>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle1}>
             My Account
           </h5>
@@ -160,7 +153,7 @@ export default function Footer() {
             </div>
           </Collapse>
         </Col>
-        <Col lg={2} md={6} sm={6}>
+        <Col lg={2} md={6} sm={6} className='mt-3'>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle2}>
             Customer Service
           </h5>
@@ -175,7 +168,7 @@ export default function Footer() {
             </div>
           </Collapse>
         </Col>
-        <Col lg={2} md={6} sm={6}>
+        <Col lg={2} md={6} sm={6} className='mt-3'>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle3}>
             Help & Customer Care
           </h5>
@@ -190,7 +183,7 @@ export default function Footer() {
             </div>
           </Collapse>
         </Col>
-        <Col lg={3} md={6} sm={6}>
+        <Col lg={3} md={6} sm={6} className='mt-3'>
           <h5 style={{ backgroundColor: '#222222', border: 'none' }} onClick={toggle4}>
             Sign Up To Newsletter
           </h5>

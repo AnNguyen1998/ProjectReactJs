@@ -1,13 +1,13 @@
 import React from 'react'
 import Header from '../../components/header/Header'
+import Search from '../../components/search/Search'
 import Footer from '../../components/footer/Footer'
-import ProductDetail from '../../components/productDetail/ProductDetail'
 
-export default function Productdetail() {
+export default function SearchPage() {
   return (
     <div>
         <Header/>
-            <ProductDetail/>
+        <Search/>
         <Footer/>
     </div>
   )

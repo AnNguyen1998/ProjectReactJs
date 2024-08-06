@@ -1,13 +1,13 @@
 import React from 'react'
+import Cart from '../../components/cart/Cart'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import ProductDetail from '../../components/productDetail/ProductDetail'
 
-export default function Productdetail() {
+export default function CartPage() {
   return (
     <div>
         <Header/>
-            <ProductDetail/>
+        <Cart/>
         <Footer/>
     </div>
   )

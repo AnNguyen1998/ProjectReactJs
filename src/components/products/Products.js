@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Product from "../product/Product"
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProducts } from '../../redux/productSlice'
+import { fetchDetail, fetchProducts } from '../../redux/productSlice'
 import Loading from '../../pages/handlePages/Loading'
 import Errorpage from '../../pages/handlePages/Errorpage'
 import { Breadcrumb, BreadcrumbItem, Container, Pagination, PaginationItem, PaginationLink, Row } from 'reactstrap'
@@ -32,9 +32,10 @@ export default function Products() {
     e.preventDefault();
     setCurrent(index + 1)
   }
+  
   return (
     <Container fluid="true">
-      <div className='title'>
+      <div className='title' style={{borderBottom:'1px solid #dfe6e9'}}>
         <h2>List Products</h2>
         <Breadcrumb>
           <BreadcrumbItem>
@@ -43,14 +44,14 @@ export default function Products() {
             </Link>
           </BreadcrumbItem>
           <BreadcrumbItem active>
-            Library
+            Products
           </BreadcrumbItem>
         </Breadcrumb>
       </div>
       <Row noGutters='true' style={{ padding: '30px' }}>
         {
           products && products.slice(current * pageSize, (current + 1) * pageSize).map((item, index) => (
-            <Product key={index} products={item} />
+            <Product key={index} products={item}/>
           ))
         }
       </Row>

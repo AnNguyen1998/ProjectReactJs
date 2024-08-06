@@ -14,6 +14,7 @@
     text-decoration: none;
     display: flex;
     margin-right: 10px;
+    position: relative;
 }
 .menu-span{
     margin-left: 10px;
@@ -90,11 +91,26 @@ strong .nav-item::after{
     transition: 1s;
 }
 .list-link{
-    background-color: #3dc1d3 !important;
     z-index: 10;
     position: absolute;
     top: 40px;
     transition: 1s;
+}
+.scrolltotop {
+    background-color: #0984e3;
+    border: none;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1;
+}
+.num-cart{
+    position: absolute;
+    right: 65px;
+    bottom: -10px;
+    font-size: 25px;
+    color: #c44569;
 }
 
 
