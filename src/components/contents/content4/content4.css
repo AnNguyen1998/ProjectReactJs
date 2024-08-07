@@ -1,8 +1,8 @@
-.content2 h4{
+.content4 h4{
     position: relative;
     width: 250px;
 }
-.content2 h4::after{
+.content4 h4::after{
  content: '';
  position: absolute;
  width: 90%;
@@ -10,10 +10,6 @@
  bottom: -10px;
  left: 13px;
 }
-.content2 h4{
+.content4 h4{
     color: black !important;
-}
-.img-cate:hover{
-    transform: scale(1.2);
-    transition: 1s;
 }

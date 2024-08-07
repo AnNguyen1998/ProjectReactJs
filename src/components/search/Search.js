@@ -19,13 +19,15 @@ export default function Search() {
                         Search
                     </BreadcrumbItem>
                 </Breadcrumb>
-                <h2>{productSearch.length} RESULT FOR "{name}"</h2>
+                <h2 className='title-font'>{productSearch.length} RESULT FOR "{name}"</h2>
             </div>
             <Row className='p-3'>
                 {
                     productSearch && productSearch.map((item, index) => (
                         <Col key={index} xl={3} lg={3} md={4} sm={6} xs={12} className='p-3'>
-                            <Card style={{ height: '500px' }} className='animate__animated animate__tada'>
+                            <Card style={{ height: '500px',
+                                boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+                             }} className='animate__animated animate__tada'>
                                 <img
                                     alt="Card"
                                     src={item.images[0]}

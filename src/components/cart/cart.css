@@ -1,3 +1,14 @@
 .contain-cart h2{
     color: black !important;
 }
+.btn-del{
+    padding: 15px !important;
+    background-color: #63cdda !important;
+    border: none !important;
+    border-radius: 30px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-del:hover{
+    animation: tada 2s infinite;
+    background-color: #e66767 !important;
+}

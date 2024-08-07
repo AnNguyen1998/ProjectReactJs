@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
-import { Button, Col, Collapse, Container, Form, Input, InputGroup, Row, Tooltip } from 'reactstrap'
+import React, { useRef, useState } from 'react'
+import { Button, Col, Collapse, Container, Input, InputGroup, Row, Tooltip } from 'reactstrap'
 import './footer.css'
 import { Link } from 'react-router-dom'
-import { BsArrowUpCircleFill, BsPerson } from 'react-icons/bs'
 import { FaCarSide, FaCreditCard, FaHandHoldingUsd, FaRocketchat } from "react-icons/fa";
 import { BiLogoDiscordAlt, BiLogoFacebook, BiLogoGmail, BiLogoInstagram, BiLogoTelegram, BiLogoTiktok } from "react-icons/bi";
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2'
+
 export default function Footer() {
+  const [text, setText] = useState('')
   const [isOpen, setIsopen] = useState(true)
   const [isOpen1, setIsopen1] = useState(true)
   const [isOpen2, setIsopen2] = useState(true)
@@ -29,7 +32,31 @@ export default function Footer() {
   const toggleTool3 = () => setTooltipOpen3(!tooltipOpen3) ;
   const toggleTool4= () => setTooltipOpen4(!tooltipOpen4) ;
   const toggleTool5 = () => setTooltipOpen5(!tooltipOpen5) ;
-  
+  const form = useRef()
+  const sendEmail = (e)=>{
+    e.preventDefault()
+    emailjs.sendForm('service_8h42n5k','template_pxrqjqc',form.current,{
+      publicKey:'KT_f0h7zBVpLZk0Mn'
+    })
+    .then(()=>{
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    .catch((error)=>{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+      console.log(error)
+    })
+    setText('')
+  }
   return (
     <div className='footer'>
       <Container>
@@ -189,14 +216,22 @@ export default function Footer() {
           </h5>
           <Collapse isOpen={isOpen4}>
             <p>Join with me to get a new discount coupon</p>
-            <Form>
+            <form ref={form} onSubmit={sendEmail}>
               <InputGroup>
-                <Input required style={{ padding: '15px' }} type='email' placeholder='Your email address...' />
+                <Input required style={{ padding: '15px' }} value={text} onChange={(e)=>setText(e.target.value)}
+                onKeyDown={(e)=>{
+                  if(e.key === 'Enter'){
+                    e.preventDefault();
+                    sendEmail()
+                    setText('')
+                  }
+                }}
+                 type='email' placeholder='Your email address...' />
                 <Button className='btn-sub'>
                   SUBSCRIBE
                 </Button>
               </InputGroup>
-            </Form>
+            </form>
             <p>By providing your email address, you agree to our Privacy Policy and Terms of Service.</p>
           </Collapse>
         </Col>

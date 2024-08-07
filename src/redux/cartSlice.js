@@ -18,7 +18,15 @@ const cartSlice = createSlice({
     initialState,
     reducers:{
         addCart(state, action){
-            state.carts.push(action.payload)
+            const { id } = action.payload
+            const index = state.carts.findIndex(function(item){return item.id === id})
+            if (index < 0){
+                // state.carts.push({...action.payload, quantity: 1})
+                state.carts = [...state.carts, {...action.payload, quantity: 1} ]
+                console.log(state.carts)
+            } else{
+                state.carts[index].quantity ++
+            }
             localStorage.setItem('cart',JSON.stringify(state.carts))
         },
         countNum(state){
@@ -26,11 +34,19 @@ const cartSlice = createSlice({
             localStorage.setItem('numcart', state.carts.length)
         },
         delItemCart(state, action){
-            state.carts = state.carts.filter(item=> item.id != action.payload)
-            localStorage.setItem('cart', JSON.stringify(state.carts.filter(item=> item.id != action.payload)))
+            state.carts = state.carts.filter(item=> item.id !== action.payload)
+            localStorage.setItem('cart', JSON.stringify(state.carts.filter(item=> item.id !== action.payload)))
+        },
+        quantityUp(state, action){
+            state.carts = state.carts.map((item)=>item.id===action.payload?{...item,quantity: item.quantity+=1}:item)
+            localStorage.setItem('cart', JSON.stringify(state.carts))
+        },
+        quantityDown(state, action){
+            state.carts = state.carts.map((item)=>item.id===action.payload?{...item,quantity: item.quantity-=1}:item)
+            localStorage.setItem('cart', JSON.stringify(state.carts))
         }
     },
 })
 
-export const {addCart, countNum, delItemCart} = cartSlice.actions
+export const {addCart, countNum, delItemCart, quantityUp, quantityDown} = cartSlice.actions
 export default cartSlice.reducer

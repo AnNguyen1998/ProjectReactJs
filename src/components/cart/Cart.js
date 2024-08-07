@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, Button, ButtonGroup, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import './cart.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { countNum, delItemCart } from '../../redux/cartSlice'
+import { countNum, delItemCart, quantityDown, quantityUp } from '../../redux/cartSlice'
 
 export default function Cart() {
     const { carts, num } = useSelector(state => state.carts)
@@ -12,9 +12,15 @@ export default function Cart() {
         dispatch(delItemCart(id))
         dispatch(countNum())
     }
+    const quantity = (id) => {
+        dispatch(quantityDown(id))
+    }
+    const quantityadd = (id) => {
+        dispatch(quantityUp(id))
+    }
     return (
         <Container className='mb-4 contain-cart'>
-            <div className='title' style={{ borderBottom: '1px solid #dfe6e9' }}>
+            <div className='title title-font' style={{ borderBottom: '1px solid #dfe6e9' }}>
                 <Breadcrumb>
                     <BreadcrumbItem>
                         <Link style={{ color: '#3dc1d3' }} to='/ProjectReactJs'>
@@ -22,7 +28,7 @@ export default function Cart() {
                         </Link>
                     </BreadcrumbItem>
                     <BreadcrumbItem active>
-                        Search
+                        Your Cart
                     </BreadcrumbItem>
                 </Breadcrumb>
                 {
@@ -32,8 +38,10 @@ export default function Cart() {
             <Row className='p-3'>
                 {
                     carts && carts.map((item, index) => (
-                        <Col key={index} xl={3} lg={3} md={4} sm={6} xs={12} className='p-3'>
-                            <Card style={{ height: '500px' }}>
+                        <Col key={index} xl={4} lg={4} md={6} sm={12} xs={12} className='p-3' style={{display:'flex', justifyContent:'center'}}>
+                            <Card style={{ height: '500px', width:'300px',
+                                boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+                             }}>
                                 <img
                                     alt="Card"
                                     src={item.images[0]}
@@ -52,12 +60,12 @@ export default function Cart() {
                                         <Link to={'/detail/' + item.id}>
                                             <Button className='btn-detail'>Detail</Button>
                                         </Link>
-                                        <ButtonGroup style={{ width: '100px' }}>
-                                            <Button style={{ width: '30%', padding: '15px', borderRadius: '30px 0 0 30px' }}>-</Button>
-                                            <Button>1</Button>
-                                            <Button style={{ width: '30%', padding: '15px', borderRadius: '0 30px 30px 0' }}>+</Button>
+                                        <ButtonGroup >
+                                            <Button disabled={item.quantity<=1?true:false} onClick={() => quantity(item.id)} style={{ width: '30%', padding: '10px', borderRadius: '30px 0 0 30px' }}>-</Button>
+                                            <Button disabled style={{ width: '40%' }}>{item.quantity}</Button>
+                                            <Button onClick={() => quantityadd(item.id)} style={{ width: '30%', padding: '10px', borderRadius: '0 30px 30px 0' }}>+</Button>
                                         </ButtonGroup>
-                                        <Button className='btn-add' onClick={() => delItem(item.id)}>Delete</Button>
+                                        <Button className='btn-del' onClick={() => delItem(item.id)}>Delete</Button>
                                     </CardText>
                                 </CardBody>
                             </Card>

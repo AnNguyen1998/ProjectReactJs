@@ -26,7 +26,9 @@ export default function SearchBox() {
     if (status === 'loading') return <Loading />
     if (status === 'failed') return <Errorpage error={error} />
     return (
-        <div style={{ width: '85%' }}>
+        <div style={{ width: '85%',
+            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'
+         }}>
             <InputGroup style={{ background: 'white', borderRadius: '3px' }} className='p-2'>
                 <ButtonDropdown isOpen={dropstate} toggle={toggle}>
                     <DropdownToggle className='p-2' style={{ border: 'none', background: 'white', color: 'black' }} caret>

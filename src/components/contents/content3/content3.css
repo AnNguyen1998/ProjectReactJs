@@ -1,0 +1,15 @@
+.content3 h4{
+    position: relative;
+    width: 250px;
+}
+.content3 h4::after{
+ content: '';
+ position: absolute;
+ width: 90%;
+ border: 1px solid #16bcdc !important;
+ bottom: -10px;
+ left: 13px;
+}
+.content3 h4{
+    color: black !important;
+}

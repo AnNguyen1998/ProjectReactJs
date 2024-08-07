@@ -13,3 +13,8 @@
 a{
     text-decoration: none;
 }
+.title-font {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: normal;
+  }

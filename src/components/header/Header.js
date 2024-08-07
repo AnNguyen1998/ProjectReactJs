@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom'
 import NavbarHidden from './NavbarHidden';
 import CollapseLink from './CollapseLink'
 import { useSelector } from 'react-redux';
+import CollapseCategories from './CollapseCategories';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [canvas, setCanvas] = useState(false)
   const [isLink, setLink] = useState(false)
+  const [isCate, setIsCate] = useState(false)
   const refcollapse = useRef(null)
   const toggleCanvas = () => setCanvas(!canvas)
   const toggle = () => setIsOpen(!isOpen);
@@ -48,11 +50,14 @@ export default function Header() {
       refnum1.current.style.display = 'block'
     }
   }, [num])
-
+  const toggleCate = ()=>{
+    setIsCate(!isCate)
+  }
   return (
     <div className='header font_text'>
       <Container fluid>
         <NavbarHidden />
+        <CollapseCategories isCate={isCate}/>
         <Container>
           <Row noGutters className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
             <Col lg={6}>
@@ -161,7 +166,7 @@ export default function Header() {
             <a href='#'><img src={LiviLogo} width={150} /></a>
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', transform: 'translateX(14px)' }} className='d-xl-none d-lg-none d-xl-block'>
-            <Link to='/cart'><BsCart3 style={{ fontSize: '35px', color: 'white' }} /></Link><p ref={numref} className='num-cart1'>{num}</p>
+            <Link to='/cart' style={{position:'relative'}}><BsCart3 style={{ fontSize: '35px', color: 'white' }} /><p ref={numref} className='num-cart1'>{num}</p></Link>
           </Col>
         </Row>
         <Container>
@@ -202,7 +207,7 @@ export default function Header() {
         <Container className='justify-content-between d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
           <Breadcrumb className='p-1' listTag='div'>
             <BreadcrumbItem>
-              <button className='btn-sort'>
+              <button className='btn-sort' onClick={toggleCate}>
                 <BsList fontSize={25} />
                 SHOP BY DEPARTMENT
               </button>
