@@ -3,12 +3,14 @@
     background-color: #f8a5c2 !important;
     border: none !important;
     border-radius: 30px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .btn-add{
     padding: 15px !important;
     background-color: #63cdda !important;
     border: none !important;
     border-radius: 30px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .btn-add:hover{
     animation: tada 2s infinite;

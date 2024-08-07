@@ -15,12 +15,12 @@ export default function Contain1main() {
         <Container>
             <Row className='p-3'>
                 <Col lg={6} style={{ display: 'flex', justifyContent: 'end', marginTop:'20px' }}>
-                    <SliderContent1 product={products[9]} />
+                    <SliderContent1 product={products[18]} />
                 </Col>
                 <Col lg={6} style={{marginTop:'30px'}}>
                     <Row>
                         {
-                            products && products.slice(8, 12).map((item, index) => (
+                            products && products.slice(15, 19).map((item, index) => (
                                 <Content11 key={index} prod={item} />
                             ))
                         }

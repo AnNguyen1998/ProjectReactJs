@@ -5,11 +5,13 @@
   "homepage": "https://annguyen1998.github.io/ProjectReactJs/",
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
+    "@emailjs/browser": "^4.4.1",
     "@reduxjs/toolkit": "^2.2.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "gh-pages": "^6.1.1",

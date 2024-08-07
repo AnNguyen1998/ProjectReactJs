@@ -36,7 +36,7 @@ export default function Products() {
   return (
     <Container fluid="true">
       <div className='title' style={{borderBottom:'1px solid #dfe6e9'}}>
-        <h2>List Products</h2>
+        <h2 className='title-font'>List Products</h2>
         <Breadcrumb>
           <BreadcrumbItem>
             <Link style={{color:'#3dc1d3'}} to='/ProjectReactJs'>

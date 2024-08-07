@@ -13,7 +13,6 @@ import Categories from '../categories/Categories';
 export default function ProductDetail() {
     const { id } = useParams();
     const { productDetail, error, status } = useSelector(state => state.productdetail);
-    const {categories} = useSelector(state=> state.categories)
     const dispatch = useDispatch();
 
     useEffect(() => {

@@ -3,10 +3,12 @@ import { BsArrowDownShort, BsArrowUpCircleFill, BsGift, BsList } from 'react-ico
 import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, Collapse, Container, Nav, NavItem } from 'reactstrap'
 import CollapseLink from './CollapseLink'
+import CollapseCategories from './CollapseCategories'
 
 export default function NavbarHidden() {
     const [isOpen, setIsOpen] = useState(false)
     const [isLink, setLink] = useState(false)
+    const [isCate, setIsCate] = useState(false)
     const refcollapse = useRef(null)
     const btnref = useRef()
     useEffect(()=>{
@@ -50,14 +52,20 @@ export default function NavbarHidden() {
         behavior: 'smooth'
     });
     }
+    const toggleCate = ()=>{
+      setIsCate(!isCate)
+    }
   return (
     <>
     <button style={{display:'none'}} ref={btnref} onClick={scrolltoTop} className='scrolltotop animate__animated animate__slow animate__shakeY animate__infinite'><BsArrowUpCircleFill fontSize={60} color='white'/></button>
     <Collapse style={{position:'fixed', top:'0', left:'0px', zIndex:'2', width:'100%', background:'#3dc1d3'}} isOpen={isOpen}>
     <Container className='justify-content-between d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
+    <div className='cateofhidden'>
+    <CollapseCategories isCate={isCate}/>
+    </div>
           <Breadcrumb className='p-1' listTag='div'>
             <BreadcrumbItem>
-              <button className='btn-sort'>
+              <button onClick={toggleCate} className='btn-sort'>
                 <BsList fontSize={25} />
                 SHOP BY DEPARTMENT
               </button>

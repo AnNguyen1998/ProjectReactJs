@@ -114,10 +114,17 @@ strong .nav-item::after{
 }
 .num-cart1{
     position: absolute;
-    right: 30px;
+    right: -10px;
     bottom: -15px;
     font-size: 25px;
     color: #c44569;
+}
+.cateofhidden{
+    position:absolute;
+    bottom: -5px;
+    left:0%; 
+    background:#63cdda; 
+    width:100%;
 }
 
 
