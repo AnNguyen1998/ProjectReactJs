@@ -35,7 +35,7 @@ export default function Footer() {
   const form = useRef()
   const sendEmail = (e)=>{
     e.preventDefault()
-    emailjs.sendForm('service_8h42n5k','template_pxrqjqc',form.current,{
+    emailjs.send('service_8h42n5k','template_hdxodbr',{email: text},{
       publicKey:'KT_f0h7zBVpLZk0Mn'
     })
     .then(()=>{
@@ -218,16 +218,9 @@ export default function Footer() {
             <p>Join with me to get a new discount coupon</p>
             <form ref={form} onSubmit={sendEmail}>
               <InputGroup>
-                <Input required style={{ padding: '15px' }} value={text} onChange={(e)=>setText(e.target.value)}
-                onKeyDown={(e)=>{
-                  if(e.key === 'Enter'){
-                    e.preventDefault();
-                    sendEmail()
-                    setText('')
-                  }
-                }}
+                <Input required style={{ padding: '15px' }} name='email' value={text} onChange={(e)=>setText(e.target.value)}
                  type='email' placeholder='Your email address...' />
-                <Button className='btn-sub'>
+                <Button type='submit' className='btn-sub'>
                   SUBSCRIBE
                 </Button>
               </InputGroup>

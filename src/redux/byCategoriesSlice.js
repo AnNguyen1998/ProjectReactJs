@@ -26,7 +26,7 @@ const byCategorySlice = createSlice({
         .addCase(fetchByCategory.fulfilled,(state, action)=>{
             state.status = 'succeeded'
             console.log(action.payload)
-            // state.byCategories.push(action.payload)
+            state.byCategories = action.payload
         })
         .addCase(fetchByCategory.rejected,(state, action)=>{
             state.status = 'failed'
