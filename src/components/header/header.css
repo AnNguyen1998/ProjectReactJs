@@ -126,6 +126,8 @@ strong .nav-item::after{
     background:#63cdda; 
     width:100%;
 }
-
-
+.drop-avt{
+    bottom: -40px;
+    left: -100px;
+}
 

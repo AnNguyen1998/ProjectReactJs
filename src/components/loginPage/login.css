@@ -1,0 +1,38 @@
+.nav-modal{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.nav-modal .active a{
+    color: #0dcaf0;
+}
+.nav-modal .active a::after{
+    content: '';
+    position: absolute;
+    width: 112%;
+    border: 1px solid #0dcaf0;
+    bottom: 0;
+    left: 0;
+}
+.nav-modal a{
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+}
+.togglemodal-btn{
+    width: 10%;
+    background-color: white !important;
+    border: none !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.btn-form{
+    color: white !important;
+    background-color: #0dcaf0 !important;
+    border: none !important;
+    padding: 10px !important;
+    width: 30%;
+    font-size: 20px !important;
+}

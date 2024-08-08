@@ -10,7 +10,7 @@ export default function CollapseLink(props) {
   const {categories} = useSelector(state=>state.categories)
   const toggle = () => setOpen((prevState) => !prevState)
   return (
-    <Collapse isOpen={isLink}>
+    <Collapse style={{zIndex:'10'}} isOpen={isLink}>
       <ListGroup className='list-link1' flush>
         {
           categories&&categories.map((item, index)=>(

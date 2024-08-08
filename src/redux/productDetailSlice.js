@@ -14,7 +14,6 @@ const initialState={
 const url = 'https://api.escuelajs.co/api/v1/products'
 
 export const fetchDetail = createAsyncThunk('productdetail/fetchDetail', async (id)=>{
-    console.log(id)
     const response = await axios.get(url + '/' + id)
     return response.data
 })

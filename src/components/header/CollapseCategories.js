@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Col, Collapse, Container, Row } from 'reactstrap'
 export default function CollapseCategories(props) {
     const {isCate} = props
@@ -17,9 +18,9 @@ export default function CollapseCategories(props) {
                                         <p>{item.name}</p>
                                         </Col>
                                         <Col lg={6}>
-                                        <div>
-                                            <img src={item.image} width={100} style={{borderRadius:'20px'}}/>
-                                        </div>
+                                        <Link>
+                                            <img src={item.image} width={100} style={{boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',borderRadius:'20px'}}/>
+                                        </Link>
                                         
                                         </Col>
                                     </Row>

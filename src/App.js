@@ -11,6 +11,7 @@ import CartPage from "./pages/cartPage/CartPage";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+
 function App() {
   useEffect(()=>{
     AOS.init()
