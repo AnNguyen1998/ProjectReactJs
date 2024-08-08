@@ -50,7 +50,7 @@ function SliderContent1(props) {
                 <Link to='/product'>
                     <Button className='btn-disco d-md-none d-lg-block d-none d-sm-block d-sm-none d-md-block'>DISCOVER NOW</Button>
                 </Link>
-                <h1 style={{ position: 'absolute', top: '10%', left: '5%', textShadow: '6px 6px 0px rgba(0,0,0,0.5)' }}>{product && product.title}</h1>
+                <h1 style={{ position: 'absolute', top: '10%', left: '5%', textShadow: '6px 6px 0px rgba(0,0,0,0.5)', zIndex:'-1' }}>{product && product.title}</h1>
                 <Carousel
                     activeIndex={activeIndex}
                     next={next}

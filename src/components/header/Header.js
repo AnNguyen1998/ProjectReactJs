@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './header.css'
 import LiviLogo from '../../images/LiviLogo.png'
-import { Alert, Breadcrumb, BreadcrumbItem, Button, Col, Collapse, Container, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, ListGroup, ListGroupItem, Nav, NavItem, Offcanvas, OffcanvasBody, OffcanvasHeader, Row, UncontrolledDropdown } from 'reactstrap';
+import { Alert, Breadcrumb, BreadcrumbItem, Button, Col, Collapse, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, ListGroup, ListGroupItem, Nav, NavItem, Offcanvas, OffcanvasBody, OffcanvasHeader, Row, UncontrolledDropdown } from 'reactstrap';
 import SearchBox from './SearchBox';
 import { BsArrowDownShort, BsBagHeart, BsCart3, BsGift, BsList, BsPeople, BsPerson, BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom'
@@ -9,11 +9,19 @@ import NavbarHidden from './NavbarHidden';
 import CollapseLink from './CollapseLink'
 import { useSelector } from 'react-redux';
 import CollapseCategories from './CollapseCategories';
+import Login from '../loginPage/Login';
+import { useAuth } from '../../firebaseContext/authContext';
+import SearchCanvas from './SearchCanvas';
+import { doSignOut } from '../../configFirebase/auth';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [canvas, setCanvas] = useState(false)
   const [isLink, setLink] = useState(false)
   const [isCate, setIsCate] = useState(false)
+  const [isOpenModal, setIsopenModal] = useState(false)
+  const [avtOpen, setAvtOpen] = useState(false)
+  const { currentUser } = useAuth()
+  const { userLoggedIn } = useAuth()
   const refcollapse = useRef(null)
   const toggleCanvas = () => setCanvas(!canvas)
   const toggle = () => setIsOpen(!isOpen);
@@ -50,14 +58,21 @@ export default function Header() {
       refnum1.current.style.display = 'block'
     }
   }, [num])
-  const toggleCate = ()=>{
+  const toggleCate = () => {
     setIsCate(!isCate)
+  }
+  const toggleModal = () => {
+    setIsopenModal(!isOpenModal)
+  }
+  const toggleAvt = () => {
+    setAvtOpen(!avtOpen)
   }
   return (
     <div className='header font_text'>
       <Container fluid>
         <NavbarHidden />
-        <CollapseCategories isCate={isCate}/>
+        <Login isOpenModal={isOpenModal} toggleModal={toggleModal} />
+        <CollapseCategories isCate={isCate} />
         <Container>
           <Row noGutters className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex'>
             <Col lg={6}>
@@ -99,26 +114,32 @@ export default function Header() {
               <Offcanvas isOpen={canvas} toggle={toggleCanvas}>
                 <OffcanvasHeader style={{ alignItems: 'center', display: 'flex', justifyContent: 'center' }} toggle={toggleCanvas}>
                   <h1 className='p-4' style={{ fontSize: '20px', marginTop: '50px' }}>WHAT ARE YOU LOOKING FOR?</h1>
-                  <InputGroup className='input-canvas'>
-                    <Input type='text' placeholder='Search...' />
-                    <Button>
-                      <BsSearch style={{ fontSize: '20px' }} />
-                    </Button>
-                  </InputGroup>
+                  <SearchCanvas />
                 </OffcanvasHeader>
                 <OffcanvasBody className='p-4'>
                   <strong>
                     <Nav vertical>
                       <NavItem>
-                        <Breadcrumb className='p-1' listTag="div">
-                          <BreadcrumbItem href="#">
-                            <BsPeople style={{ fontSize: '25px', transform: 'translateY(-4px)', marginRight: '5px' }} />
-                            <span>Login</span>
-                          </BreadcrumbItem>
-                          <BreadcrumbItem href="#">
-                            <span>Register</span>
-                          </BreadcrumbItem>
-                        </Breadcrumb>
+
+                        {
+                          userLoggedIn ?
+                            <Breadcrumb className='p-1' listTag="div">
+                              <BreadcrumbItem href="#">
+                                <BsPeople style={{ fontSize: '25px', transform: 'translateY(-4px)', marginRight: '5px' }} />
+                                <span>Hello, {currentUser.displayName}</span>
+                              </BreadcrumbItem>
+                              <BreadcrumbItem href="#">
+                                <span onClick={() => doSignOut().then(()=>window.location.reload())}>LogOut</span>
+                              </BreadcrumbItem>
+                            </Breadcrumb>
+                            :
+                            <Breadcrumb className='p-1' listTag="div">
+                              <BreadcrumbItem href="#">
+                                <BsPeople style={{ fontSize: '25px', transform: 'translateY(-4px)', marginRight: '5px' }} />
+                                <span onClick={toggleModal}>Login</span>
+                              </BreadcrumbItem>
+                            </Breadcrumb>
+                        }
                       </NavItem>
                       <NavItem>
                         <Link to='/ProjectReactJs'>
@@ -166,7 +187,7 @@ export default function Header() {
             <a href='#'><img src={LiviLogo} width={150} /></a>
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', transform: 'translateX(14px)' }} className='d-xl-none d-lg-none d-xl-block'>
-            <Link to='/cart' style={{position:'relative'}}><BsCart3 style={{ fontSize: '35px', color: 'white' }} /><p ref={numref} className='num-cart1'>{num}</p></Link>
+            <Link to='/cart' style={{ position: 'relative' }}><BsCart3 style={{ fontSize: '35px', color: 'white' }} /><p ref={numref} className='num-cart1'>{num}</p></Link>
           </Col>
         </Row>
         <Container>
@@ -178,13 +199,32 @@ export default function Header() {
               <SearchBox />
             </Col>
             <Col xl={3} lg={3} className='d-md-none d-lg-flex d-sm-none d-md-flex d-none d-sm-flex p-2' >
-              <Link href='#' className='icon-la'>
-                <BsPerson style={{ fontSize: '31px' }} />
-                <span className='menu-span'>
-                  <span className='l'>Login</span>
-                  <span className='a'>Account</span>
-                </span>
-              </Link>
+              {
+                userLoggedIn ?
+                  <Link onClick={toggleModal} className='icon-la'>
+                    <div onClick={toggleAvt} style={{ width: '35px', height: '35px', borderRadius: '50px' }}>
+                      <img src={currentUser.photoURL} style={{ width: '100%', borderRadius: '50px' }} />
+                    </div>
+                    <Dropdown isOpen={avtOpen} direction='down' className='drop-avt'>
+                      <DropdownMenu>
+                        <DropdownItem className='text-center' onClick={() => doSignOut()}>LogOut</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                    <span className='menu-span'>
+                      <span className='l'>Hello</span>
+                      <span style={{ color: '#e74c3c' }} className='a'>{currentUser.displayName.slice(0, currentUser.displayName.indexOf(" "))}</span>
+                    </span>
+                  </Link>
+                  :
+                  <Link onClick={toggleModal} className='icon-la'>
+                    <BsPerson style={{ fontSize: '31px' }} />
+                    <span className='menu-span'>
+                      <span className='l'>Login</span>
+                      <span className='a'>Account</span>
+                    </span>
+                  </Link>
+              }
+
               <Link href='#' className='icon-la'>
                 <BsBagHeart style={{ fontSize: '31px' }} />
                 <span className='menu-span'>
