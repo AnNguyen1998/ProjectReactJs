@@ -27,7 +27,8 @@ export default function SearchBox() {
     if (status === 'failed') return <Errorpage error={error} />
     return (
         <div style={{ width: '85%',
-            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px'
+            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+            height:'80%'
          }}>
             <InputGroup style={{ background: 'white', borderRadius: '3px' }} className='p-2'>
                 <ButtonDropdown isOpen={dropstate} toggle={toggle}>

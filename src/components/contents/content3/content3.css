@@ -1,6 +1,6 @@
 .content3 h4{
     position: relative;
-    width: 250px;
+    width: 300px;
 }
 .content3 h4::after{
  content: '';
@@ -12,4 +12,7 @@
 }
 .content3 h4{
     color: black !important;
+}
+.content3 a{
+    color: black;
 }

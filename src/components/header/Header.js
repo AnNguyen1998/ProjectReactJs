@@ -13,19 +13,20 @@ import Login from '../loginPage/Login';
 import { useAuth } from '../../firebaseContext/authContext';
 import SearchCanvas from './SearchCanvas';
 import { doSignOut } from '../../configFirebase/auth';
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [canvas, setCanvas] = useState(false)
   const [isLink, setLink] = useState(false)
   const [isCate, setIsCate] = useState(false)
   const [isOpenModal, setIsopenModal] = useState(false)
-  const [avtOpen, setAvtOpen] = useState(false)
   const { currentUser } = useAuth()
   const { userLoggedIn } = useAuth()
   const refcollapse = useRef(null)
   const toggleCanvas = () => setCanvas(!canvas)
   const toggle = () => setIsOpen(!isOpen);
   const { categories } = useSelector(state => state.categories)
+
   useEffect(() => {
     const element = refcollapse.current
     const collapseon = () => {
@@ -64,9 +65,7 @@ export default function Header() {
   const toggleModal = () => {
     setIsopenModal(!isOpenModal)
   }
-  const toggleAvt = () => {
-    setAvtOpen(!avtOpen)
-  }
+  
   return (
     <div className='header font_text'>
       <Container fluid>
@@ -202,17 +201,13 @@ export default function Header() {
               {
                 userLoggedIn ?
                   <Link onClick={toggleModal} className='icon-la'>
-                    <div onClick={toggleAvt} style={{ width: '35px', height: '35px', borderRadius: '50px' }}>
+                    <div style={{ width: '35px', height: '35px', borderRadius: '50px' }}>
                       <img src={currentUser.photoURL} style={{ width: '100%', borderRadius: '50px' }} />
                     </div>
-                    <Dropdown isOpen={avtOpen} direction='down' className='drop-avt'>
-                      <DropdownMenu>
-                        <DropdownItem className='text-center' onClick={() => doSignOut()}>LogOut</DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
                     <span className='menu-span'>
                       <span className='l'>Hello</span>
                       <span style={{ color: '#e74c3c' }} className='a'>{currentUser.displayName.slice(0, currentUser.displayName.indexOf(" "))}</span>
+                      <span style={{width:'58px'}} className='l' onClick={() => doSignOut().then(()=>{window.location.reload()})}>Sign Out</span>
                     </span>
                   </Link>
                   :

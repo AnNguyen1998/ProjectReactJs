@@ -11,6 +11,7 @@ import CartPage from "./pages/cartPage/CartPage";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import ProductByCategory from "./pages/productByCategory/ProductByCategory";
 
 function App() {
   useEffect(()=>{
@@ -29,6 +30,7 @@ function App() {
           <Route path="*" element={<NotFound/>}/>
           <Route path="/search" element={<SearchPage/>}/>
           <Route path="/cart" element={<CartPage/>}/>
+          <Route path="/category/:id" element={<ProductByCategory/>}/>
         </Routes>
       </BrowserRouter>
     </div>
