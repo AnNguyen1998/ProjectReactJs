@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Col, Container, Nav, NavItem, Row, TabContent, TabPane } from 'reactstrap'
 import './productDetail.css'
+import ImageZoom from "react-image-zooom";
+
 export default function NavTab(props) {
     const {detail} = props
     const [open, setOpen] = useState('1')
@@ -44,11 +46,17 @@ export default function NavTab(props) {
                     <TabContent activeTab={open}>
                         <TabPane tabId="1">
                             <Row>
-                                <Col sm="12">
-                                    <p>Elevate your wardrobe with this stylish black t-shirt featuring a striking monochrome mountain range graphic.
-                                         Perfect for those who love the outdoors or want to add a touch of nature-inspired design to their look, this tee is crafted from soft, breathable fabric ensuring all-day comfort. Ideal for casual outings or as a unique gift,
-                                         this t-shirt is a versatile addition to any collection.</p>
+                                
+                                <Col sm="4">
+                                   <ImageZoom alt="Zoom-images" zoom="300" style={{width:'80%'}} src={detail && detail.images[0]}/>
                                 </Col>
+                                <Col sm="4">
+                                   <ImageZoom zoom='300' style={{width:'80%'}} src={detail && detail.images[1]}/>
+                                </Col>
+                                <Col sm="4">
+                                   <ImageZoom zoom='300' style={{width:'80%'}} src={detail && detail.images[2]}/>
+                                </Col>
+                                
                             </Row>
                         </TabPane>
                         <TabPane tabId="2">
@@ -66,15 +74,9 @@ export default function NavTab(props) {
                         <TabPane tabId="3">
                             <Row>
                             <p>BLOG</p>
-                                <Col sm="4">
-                                   <img style={{width:'80%'}} src={detail && detail.images[0]}/>
-                                </Col>
-                                <Col sm="4">
-                                   <img style={{width:'80%'}} src={detail && detail.images[1]}/>
-                                </Col>
-                                <Col sm="4">
-                                   <img style={{width:'80%'}} src={detail && detail.images[2]}/>
-                                </Col>
+                            <p>Elevate your wardrobe with this stylish black t-shirt featuring a striking monochrome mountain range graphic.
+                                         Perfect for those who love the outdoors or want to add a touch of nature-inspired design to their look, this tee is crafted from soft, breathable fabric ensuring all-day comfort. Ideal for casual outings or as a unique gift,
+                                         this t-shirt is a versatile addition to any collection.</p>
                             </Row>
                         </TabPane>
                         <TabPane tabId="4">

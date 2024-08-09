@@ -20,7 +20,6 @@ export default function ProductbyCategories() {
         dispatch(addCart(prod))
         dispatch(countNum())
     }
-    console.log(byCategories && byCategories)
     return (
         <Container>
             <Container>
@@ -41,6 +40,7 @@ export default function ProductbyCategories() {
                 {
                     byCategories && byCategories.map((item, index) => (
                         <Col key={index} lg={3} md={4} sm={6} xs={12} className='mt-4 p-3'>
+                            <div data-aos='zoom-in-up' >
                             <Card style={{
                                 height: '550px',
                                 boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px'
@@ -67,6 +67,7 @@ export default function ProductbyCategories() {
                                     </CardText>
                                 </CardBody>
                             </Card>
+                            </div>
                         </Col>
                     ))
                 }

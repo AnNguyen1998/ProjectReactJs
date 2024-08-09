@@ -15,8 +15,8 @@ export default function Product(props) {
     dispatch(countNum())
   }
   return (
-    <Col xl={2} lg={3} md={4} sm={6} xs={12} className='p-3'>
-      <div data-aos='zoom-in-up'>
+    <Col xl={2} lg={3} md={4} sm={6} xs={12} className='p-3' >
+      <div data-aos='zoom-in-up' >
       <Card style={{height:'550px',
         boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px'
       }} className={anim?'animate__animated animate__pulse':""}>

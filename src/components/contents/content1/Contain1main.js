@@ -14,7 +14,7 @@ export default function Contain1main() {
     return (
         <Container>
             <Row className='p-3'>
-                <Col lg={6} style={{ display: 'flex', justifyContent: 'end', marginTop:'20px' }}>
+                <Col lg={6} style={{ display: 'flex', justifyContent: 'end', marginTop:'20px'}}>
                     <SliderContent1 product={products[18]} />
                 </Col>
                 <Col lg={6} style={{marginTop:'30px'}}>

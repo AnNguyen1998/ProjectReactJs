@@ -6,7 +6,7 @@ export default function CollapseCategories(props) {
     const {isCate} = props
     const { categories, status, error } = useSelector(state => state.categories)
     return (
-        <div style={{position:'absolute', top:'26%', left:'16%', background:'#63cdda', width:'50%', zIndex:'1'}}>
+        <div style={{position:'absolute', top:'101%', left:'16%', background:'#63cdda', width:'50%', zIndex:'1'}}>
             <Collapse isOpen={isCate}>
                 <Container>
                     <Row className='p-3'>
