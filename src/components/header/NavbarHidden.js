@@ -98,7 +98,7 @@ export default function NavbarHidden() {
                   </Link>
                 </NavItem>
                 <NavItem style={{ marginRight: '40px' }}>
-                  <Link href="#">
+                  <Link to='/contactus'>
                     CONTACT US
                   </Link>
                 </NavItem>

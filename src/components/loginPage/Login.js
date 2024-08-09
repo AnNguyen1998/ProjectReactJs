@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Col, Container, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap'
+import { Button, Col, Container, Form, FormGroup, Input, Label, Modal, ModalBody, Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap'
 import './login.css'
-import { Navigate, Link } from 'react-router-dom'
-import { doSignInWithGoogle } from "../../configFirebase/auth"
+import { Link } from 'react-router-dom'
+import { doSignInWithGoogle, doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword } from "../../configFirebase/auth"
 import { useAuth } from '../../firebaseContext/authContext'
 import { BsXLg } from "react-icons/bs";
 import GGicon from '../../images/ggicon.png'
@@ -13,6 +13,37 @@ export default function Login(props) {
     const toggle = (num) => setOpen(num)
     const { userLoggedIn } = useAuth()
     const [isSigningIn, setIsSigningIn] = useState(false)
+    const [confirm, setConfirm] = useState(false)
+    const [createMail, setCreateMail] = useState('')
+    const [createPass, setCreatePass] = useState('')
+    const [checkcreatePass, setCheckCreatePass] = useState('')
+    const [username, setUsername] = useState('')
+    const [pass, setPass] = useState('')
+    const [check, setCheck] = useState(false)
+
+    const LoginAccount = async (e)=>{
+        e.preventDefault();
+        if(!isSigningIn){
+            setIsSigningIn(true)
+            await doSignInWithEmailAndPassword(username, pass)
+            .then(()=>setCheck(false))
+            .catch(()=>{
+                // window.location.reload();
+                setCheck(true)
+            })
+        }
+    }
+
+    const hanldeRegister = async (e)=>{
+        e.preventDefault();
+        if(checkcreatePass != createPass){
+            setConfirm(true)
+        }else{
+                await doCreateUserWithEmailAndPassword(createMail, createPass)
+                .catch(()=>{alert("error")})
+                setConfirm(false)
+        }
+    }
 
     const onGoogleSignIn = (e) => {
         e.preventDefault()
@@ -59,7 +90,7 @@ return (
                     <TabPane tabId="1">
                         <Row>
                             <Col sm="12">
-                                <Form>
+                                <Form onSubmit={LoginAccount}>
                                     <FormGroup>
                                         <Label for="Email">
                                             Email
@@ -69,6 +100,9 @@ return (
                                             name="email"
                                             placeholder="Enter your Email..."
                                             type="email"
+                                            value={username}
+                                            onChange={(e)=>setUsername(e.target.value)}
+                                            required
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -80,9 +114,13 @@ return (
                                             name="password"
                                             placeholder="Enter your Password..."
                                             type="password"
+                                            value={pass}
+                                            onChange={(e)=>setPass(e.target.value)}
+                                            required
                                         />
                                     </FormGroup>
-                                    <Button className='btn-form'>LOGIN</Button>
+                                    {check?<p style={{color:'red'}}>Wrong Email or Password</p>:''}
+                                    <Button type='submit' className='btn-form'>LOGIN</Button>
                                 </Form>
                                 <Link>Forget your Password ?</Link>
                                 <p className='mt-3'>Or Login With <Link onClick={onGoogleSignIn}><img width={60} src={GGicon} /></Link></p>
@@ -92,7 +130,7 @@ return (
                     <TabPane tabId="2">
                         <Row>
                             <Col sm="12">
-                                <Form>
+                                <Form onSubmit={hanldeRegister}>
                                     <FormGroup>
                                         <Label for="1Email">
                                             Email
@@ -102,6 +140,9 @@ return (
                                             name="email"
                                             placeholder="Enter your Email..."
                                             type="email"
+                                            value={createMail}
+                                            onChange={(e)=>setCreateMail(e.target.value)}
+                                            required
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -113,6 +154,9 @@ return (
                                             name="password"
                                             placeholder="Enter your Password..."
                                             type="password"
+                                            value={createPass}
+                                            onChange={(e)=>setCreatePass(e.target.value)}
+                                            required
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -122,11 +166,17 @@ return (
                                         <Input
                                             id="RecheckPassword"
                                             name="password"
-                                            placeholder="Enter your Password again"
+                                            placeholder="Enter your Password again..."
                                             type="password"
+                                            value={checkcreatePass}
+                                            onChange={(e)=>setCheckCreatePass(e.target.value)}
+                                            required
                                         />
                                     </FormGroup>
-                                    <Button className='btn-form'>REGISTER</Button>
+                                    {
+                                        confirm?<p style={{color:'red'}}>Your password check is incorrect</p>:""
+                                    }
+                                    <Button type='submit' className='btn-form'>REGISTER</Button>
                                 </Form>
                             </Col>
                         </Row>

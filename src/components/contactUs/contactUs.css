@@ -1,0 +1,16 @@
+.contain-contact h2, .contain-contact h5{
+    color: black;
+}
+.contain-contact label{
+    color: black
+}
+.contain-contact p{
+    color: black;
+}
+.contain-contact .btn-contact{
+    background-color: #0dcaf0 !important;
+    border: none !important;
+    padding:5px !important;
+    width: 50%;
+    font-size: 25px;
+}

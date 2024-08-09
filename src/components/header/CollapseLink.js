@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ListGroup, Collapse, ListGroupItem, DropdownMenu, DropdownItem, Dropdown } from 'reactstrap'
 import './collapseLink.css'
@@ -9,8 +9,9 @@ export default function CollapseLink(props) {
   const [dropdownOpen, setOpen] = useState(false)
   const {categories} = useSelector(state=>state.categories)
   const toggle = () => setOpen((prevState) => !prevState)
+  
   return (
-    <Collapse style={{zIndex:'10'}} isOpen={isLink}>
+    <Collapse isOpen={isLink}>
       <ListGroup className='list-link1' flush>
         {
           categories&&categories.map((item, index)=>(

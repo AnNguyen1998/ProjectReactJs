@@ -12,7 +12,6 @@ export default function Content() {
             <Content2/>
             <ContentAnimate/>
             <Content3/>
-            <Content4/>
         </div>
     )
 }

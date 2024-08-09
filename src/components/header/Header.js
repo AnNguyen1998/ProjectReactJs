@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './header.css'
 import LiviLogo from '../../images/LiviLogo.png'
-import { Alert, Breadcrumb, BreadcrumbItem, Button, Col, Collapse, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Input, InputGroup, ListGroup, ListGroupItem, Nav, NavItem, Offcanvas, OffcanvasBody, OffcanvasHeader, Row, UncontrolledDropdown } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Col, Collapse, Container, ListGroup, ListGroupItem, Nav, NavItem, Offcanvas, OffcanvasBody, OffcanvasHeader, Row, UncontrolledDropdown } from 'reactstrap';
 import SearchBox from './SearchBox';
 import { BsArrowDownShort, BsBagHeart, BsCart3, BsGift, BsList, BsPeople, BsPerson, BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom'
@@ -13,6 +13,7 @@ import Login from '../loginPage/Login';
 import { useAuth } from '../../firebaseContext/authContext';
 import SearchCanvas from './SearchCanvas';
 import { doSignOut } from '../../configFirebase/auth';
+import Avticon from '../../images/avticon.png'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function Header() {
   const toggleModal = () => {
     setIsopenModal(!isOpenModal)
   }
-  
+  // console.log(currentUser)
   return (
     <div className='header font_text'>
       <Container fluid>
@@ -96,7 +97,7 @@ export default function Header() {
                   Order Tracking
                 </BreadcrumbItem>
                 <BreadcrumbItem href="#">
-                  Contact Us
+                <Link style={{color:'white'}} to='/contactus'>Contact Us</Link>
                 </BreadcrumbItem>
                 <BreadcrumbItem>
                   FAQs
@@ -171,7 +172,7 @@ export default function Header() {
                         </Collapse>
                       </NavItem>
                       <NavItem>
-                        <Link href="#">
+                        <Link to='/contactus'>
                           Contact Us
                         </Link>
                       </NavItem>
@@ -202,11 +203,11 @@ export default function Header() {
                 userLoggedIn ?
                   <Link onClick={toggleModal} className='icon-la'>
                     <div style={{ width: '35px', height: '35px', borderRadius: '50px' }}>
-                      <img src={currentUser.photoURL} style={{ width: '100%', borderRadius: '50px' }} />
+                      <img src={currentUser.photoURL?currentUser.photoURL:Avticon} style={{ width: '100%', borderRadius: '50px' }} />
                     </div>
                     <span className='menu-span'>
                       <span className='l'>Hello</span>
-                      <span style={{ color: '#e74c3c' }} className='a'>{currentUser.displayName.slice(0, currentUser.displayName.indexOf(" "))}</span>
+                      <span style={{ color: '#e74c3c' }} className='a'>{currentUser.displayName?currentUser.displayName.slice(0, currentUser.displayName.indexOf(" ")):currentUser.email.slice(0, currentUser.email.indexOf("@"))}</span>
                       <span style={{width:'58px'}} className='l' onClick={() => doSignOut().then(()=>{window.location.reload()})}>Sign Out</span>
                     </span>
                   </Link>
@@ -260,9 +261,9 @@ export default function Header() {
                   </Link>
                 </NavItem>
                 <div ref={refcollapse}>
-                  <NavItem style={{ marginRight: '40px' }}>
+                  <NavItem style={{ marginRight: '40px'}}>
                     <Link>CATEGORIES <BsArrowDownShort fontSize={25} /></Link>
-                    <div className='list-link'>
+                    <div className='list-link' style={{zIndex:'1'}}>
                       <CollapseLink isLink={isLink} />
                     </div>
                   </NavItem>
@@ -273,7 +274,7 @@ export default function Header() {
                   </Link>
                 </NavItem>
                 <NavItem style={{ marginRight: '40px' }}>
-                  <Link href="#">
+                  <Link to='/contactus'>
                     CONTACT US
                   </Link>
                 </NavItem>

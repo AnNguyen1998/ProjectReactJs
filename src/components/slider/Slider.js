@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel,CarouselItem,CarouselControl, CarouselIndicators,CarouselCaption} from 'reactstrap';
-
+import './slider.css'
     function Slider(props) {
         const [activeIndex, setActiveIndex] = useState(0);
         const [animating, setAnimating] = useState(false);
@@ -35,7 +35,7 @@ import { Carousel,CarouselItem,CarouselControl, CarouselIndicators,CarouselCapti
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} height={600}/>
+                <img src={item.src} alt={item.altText} height={600} style={{borderRadius:'50px'}}/>
             </CarouselItem>
         );
     });
@@ -45,6 +45,7 @@ return (
         activeIndex={activeIndex}
         next={next}
         previous={previous}
+        className='carou-detail'
     >
         <CarouselIndicators
             items={items}

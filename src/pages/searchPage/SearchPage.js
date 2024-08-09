@@ -6,9 +6,14 @@ import Footer from '../../components/footer/Footer'
 export default function SearchPage() {
   return (
     <div>
-        <Header/>
-        <Search/>
-        <Footer/>
+      <div style={{ position: 'relative', zIndex: '1' }}>
+        <Header />
+      </div>
+      <div style={{ position: 'relative', zIndex: '0' }}>
+        <Search />
+      </div>
+
+      <Footer />
     </div>
   )
 }

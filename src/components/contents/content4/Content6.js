@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchClothes } from '../../../redux/clothesSlice'
+import { fetchHola } from '../../../redux/clothesSlice'
 import Loading from '../../../pages/handlePages/Loading'
 import Errorpage from '../../../pages/handlePages/Errorpage'
 import { Link } from 'react-router-dom'
 import { addCart, countNum } from '../../../redux/cartSlice'
 
-export default function Content4() {
+export default function Content6() {
+  
   const [anim, setAnim] = useState(false)
-  const { clothes, status, error } = useSelector(state => state.clothes)
+  const { hola, status, error } = useSelector(state => state.clothes)
   const dispatch = useDispatch()
   useEffect(() => {
-      dispatch(fetchClothes())
+      dispatch(fetchHola())
   }, [])
   if (status === 'loading') return <Loading />
   if (status === 'failed') return <Errorpage error={error} />
@@ -26,7 +27,7 @@ export default function Content4() {
     <Container className='contain4'>
       <Row>
         {
-          clothes && clothes.slice(0, 6).map((item, index) => (
+          hola && hola.slice(0, 6).map((item, index) => (
             <Col key={index} lg={2} md={4} sm={6} xs={12}>
               <div data-aos='zoom-in-up' >
                 <Card style={{
@@ -51,7 +52,9 @@ export default function Content4() {
                       <Link to={'/detail/' + item.id}>
                         <Button className='btn-detail'>Detail</Button>
                       </Link>
+
                       <Button className='btn-add' onClick={() => onAnim(item)}>Add cart</Button>
+
                     </CardText>
                   </CardBody>
                 </Card>

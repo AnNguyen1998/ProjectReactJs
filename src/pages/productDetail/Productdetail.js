@@ -6,8 +6,13 @@ import ProductDetail from '../../components/productDetail/ProductDetail'
 export default function Productdetail() {
   return (
     <div>
-        <Header/>
-            <ProductDetail/>
+        <div style={{ position: 'relative', zIndex: '1' }}>
+        <Header />
+      </div>
+      <div style={{ position: 'relative', zIndex: '0' }}>
+      <ProductDetail/>
+      </div>
+            
         <Footer/>
     </div>
   )

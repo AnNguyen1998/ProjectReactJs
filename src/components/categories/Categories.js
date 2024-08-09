@@ -5,6 +5,7 @@ import Loading from '../../pages/handlePages/Loading'
 import Errorpage from '../../pages/handlePages/Errorpage'
 import { ListGroup, ListGroupItem } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import './cate.css'
 
 export default function Categories() {
     const { categories, status, error } = useSelector(state => state.categories)
@@ -17,7 +18,7 @@ export default function Categories() {
     if (status === 'loading') return <Loading />
     if (status === 'failed') return <Errorpage error={error}/>
     return (
-        <ListGroup flush>
+        <ListGroup className='lg-cate' flush>
             {categories && categories.map((item, index)=>(
                 <ListGroupItem
                     disabled

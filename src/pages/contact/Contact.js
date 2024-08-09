@@ -1,18 +1,19 @@
 import React from 'react'
-import Cart from '../../components/cart/Cart'
+import ContactUs from '../../components/contactUs/ContactUs'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
-export default function CartPage() {
+export default function Contact() {
   return (
     <div>
-      <div style={{ position: 'relative', zIndex: '1' }}>
+        <div style={{ position: 'relative', zIndex: '1' }}>
         <Header />
       </div>
       <div style={{ position: 'relative', zIndex: '0' }}>
-        <Cart />
+      <ContactUs/>
       </div>
-      <Footer />
+        
+        <Footer/>
     </div>
   )
 }

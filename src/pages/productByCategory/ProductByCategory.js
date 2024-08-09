@@ -6,9 +6,14 @@ import ProductbyCategories from '../../components/productbyCategories/ProductbyC
 export default function ProductByCategory() {
   return (
     <div>
-      <Header/>
-        <ProductbyCategories/>
-      <Footer/>
+      <div style={{ position: 'relative', zIndex: '1' }}>
+        <Header />
+      </div>
+      <div style={{ position: 'relative', zIndex: '0' }}>
+        <ProductbyCategories />
+      </div>
+
+      <Footer />
     </div>
   )
 }

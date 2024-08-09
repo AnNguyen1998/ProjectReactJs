@@ -42,7 +42,7 @@ export default function Footer() {
       Swal.fire({
         position: "top-center",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Your email has been successfully registered.",
         showConfirmButton: false,
         timer: 1500
       });

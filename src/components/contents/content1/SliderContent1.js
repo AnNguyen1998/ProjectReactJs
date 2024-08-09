@@ -42,15 +42,14 @@ function SliderContent1(props) {
 
     return (
         <>
-
-            <div style={{
+            <div className='carou-content' style={{
                 position: 'relative', borderRadius: '50px',
                 boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'
             }}>
                 <Link to='/product'>
                     <Button className='btn-disco d-md-none d-lg-block d-none d-sm-block d-sm-none d-md-block'>DISCOVER NOW</Button>
                 </Link>
-                <h1 style={{ position: 'absolute', top: '10%', left: '5%', textShadow: '6px 6px 0px rgba(0,0,0,0.5)', zIndex:'-1' }}>{product && product.title}</h1>
+                <h1 style={{ position: 'absolute', top: '10%', left: '5%', textShadow: '6px 6px 0px rgba(0,0,0,0.5)', zIndex:'10'}}>{product && product.title}</h1>
                 <Carousel
                     activeIndex={activeIndex}
                     next={next}
@@ -73,7 +72,7 @@ function SliderContent1(props) {
                         onClickHandler={next}
                     />
                 </Carousel>
-            </div>
+                </div>
         </>
     );
 }

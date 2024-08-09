@@ -1,7 +1,6 @@
 import {BrowserRouter,HashRouter, Routes, Route} from "react-router-dom"
 import Home from "./pages/home/Home";
 import Product from "./pages/product/Product";
-import Register from "./pages/register/Register";
 import NotFound from "./pages/notFound/NotFound";
 import Productdetail from "./pages/productDetail/Productdetail";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +11,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 import ProductByCategory from "./pages/productByCategory/ProductByCategory";
+import Contact from "./pages/contact/Contact";
+import FilterByPrice from './pages/filterByPrice/FilterByPrice'
 
 function App() {
   useEffect(()=>{
@@ -25,12 +26,13 @@ function App() {
           <Route path="/ProjectReactJs" element={<Home/>}/>
           <Route path="/product" element={<Product/>}/>
           <Route path="/detail/:id" element={<Productdetail/>}/>
-          <Route path="/register" element={<Register/>}/>
           <Route path="/404" element={<NotFound/>}/>
           <Route path="*" element={<NotFound/>}/>
           <Route path="/search" element={<SearchPage/>}/>
           <Route path="/cart" element={<CartPage/>}/>
           <Route path="/category/:id" element={<ProductByCategory/>}/>
+          <Route path="/contactus" element={<Contact/>}/>
+          <Route path="/filterbyprice" element={<FilterByPrice/>}/>
         </Routes>
       </BrowserRouter>
     </div>
