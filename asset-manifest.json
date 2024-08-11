@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.css": "/ProjectReactJs/static/css/main.2853c88b.css",
-    "main.js": "/ProjectReactJs/static/js/main.8e1e4c4d.js",
+    "main.css": "/ProjectReactJs/static/css/main.dce55cbc.css",
+    "main.js": "/ProjectReactJs/static/js/main.40a6077a.js",
+    "static/media/404.png": "/ProjectReactJs/static/media/404.19a01faaddcba524a829.png",
+    "static/media/ErrorNetwork.png": "/ProjectReactJs/static/media/ErrorNetwork.9166707aece5ec278805.png",
+    "static/media/LiviLogo.png": "/ProjectReactJs/static/media/LiviLogo.907346964bf09efc30f6.png",
+    "static/media/avticon.png": "/ProjectReactJs/static/media/avticon.56e9e37e2871c37add23.png",
+    "static/media/ggicon.png": "/ProjectReactJs/static/media/ggicon.9a136a9879f1158a0715.png",
     "index.html": "/ProjectReactJs/index.html",
-    "main.2853c88b.css.map": "/ProjectReactJs/static/css/main.2853c88b.css.map",
-    "main.8e1e4c4d.js.map": "/ProjectReactJs/static/js/main.8e1e4c4d.js.map"
+    "main.dce55cbc.css.map": "/ProjectReactJs/static/css/main.dce55cbc.css.map",
+    "main.40a6077a.js.map": "/ProjectReactJs/static/js/main.40a6077a.js.map"
   },
   "entrypoints": [
-    "static/css/main.2853c88b.css",
-    "static/js/main.8e1e4c4d.js"
+    "static/css/main.dce55cbc.css",
+    "static/js/main.40a6077a.js"
   ]
 }
