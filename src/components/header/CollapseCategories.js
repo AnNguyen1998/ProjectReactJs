@@ -18,10 +18,9 @@ export default function CollapseCategories(props) {
                                         <p>{item.name}</p>
                                         </Col>
                                         <Col lg={6}>
-                                        <Link>
+                                        <Link to={'/category/' + item.id}>
                                             <img src={item.image} width={100} style={{boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',borderRadius:'20px'}}/>
                                         </Link>
-                                        
                                         </Col>
                                     </Row>
                                 </Col>

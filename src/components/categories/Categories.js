@@ -21,12 +21,12 @@ export default function Categories() {
         <ListGroup className='lg-cate' flush>
             {categories && categories.map((item, index)=>(
                 <ListGroupItem
-                    disabled
-                    href="#"
                     tag="a"
                     key={index}
                 >
-                    <Link>{item.name}</Link>
+                    <Link to={'/category/' + item.id}>
+                    {item.name}
+                    </Link>
                 </ListGroupItem>
             ))
             }

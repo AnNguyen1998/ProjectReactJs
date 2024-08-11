@@ -16,12 +16,12 @@ export default function CollapseLink(props) {
         {
           categories&&categories.map((item, index)=>(
             <ListGroupItem
-          disabled
-          href="#"
           tag="a"
           key={index}
         >
+          <Link to={'/category/' + item.id}>
           {item.name}
+          </Link>
         </ListGroupItem>
           ))
         }

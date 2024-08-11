@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Breadcrumb, BreadcrumbItem, Button, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import './search.css'
 import { useSelector } from 'react-redux'
+import ImgErr from '../../images/ErrorNetwork.png'
 
 export default function Search() {
     const { productSearch, name } = useSelector(state => state.productSearch)
@@ -30,7 +31,7 @@ export default function Search() {
                              }} className='animate__animated animate__tada'>
                                 <img
                                     alt="Card"
-                                    src={item.images[0]}
+                                    src={(item.images[0].slice(-3) == 'jpg' || item.images[0].slice(-4) == 'jpeg') ? item.images[0] : ImgErr}
                                     height={300}
                                 />
                                 <CardBody>

@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import { addCart, countNum } from '../../redux/cartSlice'
 import "./productbyCate.css"
 import { fetchByCategory } from '../../redux/byCategoriesSlice'
+import ImgErr from '../../images/ErrorNetwork.png'
 
 export default function ProductbyCategories() {
     const [anim, setAnim] = useState(false)
@@ -47,7 +48,7 @@ export default function ProductbyCategories() {
                             }} className={anim ? 'animate__animated animate__pulse' : ""}>
                                 <img
                                     alt="Card"
-                                    src={item.images && item.images[1]}
+                                    src={item.images[1] && (item.images[1].slice(-3) == 'jpg' || item.images[1].slice(-4) == 'jpeg') ? item.images[1] : ImgErr}
                                     height={300}
                                 />
                                 <CardBody>

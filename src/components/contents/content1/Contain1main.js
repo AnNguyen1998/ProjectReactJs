@@ -4,20 +4,22 @@ import Content11 from './Content11'
 import { useDispatch, useSelector } from 'react-redux'
 import SliderContent1 from '../content1/SliderContent1'
 import { fetchProducts } from '../../../redux/productSlice'
+import ImgErr from '../../../images/ErrorNetwork.png'
 
 export default function Contain1main() {
     const { products } = useSelector(state => state.products)
     const dispatch = useDispatch()
+    const imgErr = [{ images: ImgErr }]
     useEffect(() => {
         dispatch(fetchProducts())
     }, [])
     return (
         <Container>
             <Row className='p-3'>
-                <Col lg={6} style={{ display: 'flex', justifyContent: 'end', marginTop:'20px'}}>
+                <Col lg={6} style={{ display: 'flex', justifyContent: 'end', marginTop: '20px' }}>
                     <SliderContent1 product={products[18]} />
                 </Col>
-                <Col lg={6} style={{marginTop:'30px'}}>
+                <Col lg={6} style={{ marginTop: '30px' }}>
                     <Row>
                         {
                             products && products.slice(15, 19).map((item, index) => (
