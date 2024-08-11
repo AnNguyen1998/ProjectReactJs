@@ -6,6 +6,7 @@ import Loading from '../../../pages/handlePages/Loading'
 import Errorpage from '../../../pages/handlePages/Errorpage'
 import { Link } from 'react-router-dom'
 import { addCart, countNum } from '../../../redux/cartSlice'
+import ImgErr from '../../../images/ErrorNetwork.png'
 
 export default function Content7() {
   
@@ -28,7 +29,7 @@ export default function Content7() {
       <Row>
         {
           shoe && shoe.slice(0, 6).map((item, index) => (
-            <Col key={index} lg={2} md={4} sm={6} xs={12}>
+            <Col key={index} lg={2} md={4} sm={6} xs={12} className='p-3'>
               <div data-aos='zoom-in-up' >
                 <Card style={{
                   height: '450px',
@@ -36,8 +37,8 @@ export default function Content7() {
                 }} className={anim ? 'animate__animated animate__pulse' : ""}>
                   <img
                     alt="Card"
-                    src={item.images && item.images[0]}
-                    height={300}
+                    src={item.images && (item.images[0].slice(-3) == 'jpg' || item.images[0].slice(-4) == 'jpeg') ? item.images[0] : ImgErr}
+                    style={{height:'50%'}}
                   />
                   <CardBody>
                     <CardTitle tag="h5">

@@ -160,11 +160,10 @@ export default function Header() {
                             {
                               categories && categories.map((item, index) => (
                                 <ListGroupItem
-                                  href="#"
                                   tag="a"
                                   key={index}
                                 >
-                                  <Link>{item.name}</Link>
+                                  <Link to={'/category/' + item.id}>{item.name}</Link>
                                 </ListGroupItem>
                               ))
                             }
@@ -184,7 +183,7 @@ export default function Header() {
             </div>
           </Col>
           <Col className='d-xl-none d-lg-none d-xl-block' style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <a href='#'><img src={LiviLogo} width={150} /></a>
+            <Link to='/ProjectReactJs'><img src={LiviLogo} width={150} /></Link>
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', transform: 'translateX(14px)' }} className='d-xl-none d-lg-none d-xl-block'>
             <Link to='/cart' style={{ position: 'relative' }}><BsCart3 style={{ fontSize: '35px', color: 'white' }} /><p ref={numref} className='num-cart1'>{num}</p></Link>

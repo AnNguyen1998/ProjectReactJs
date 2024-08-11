@@ -39,7 +39,6 @@ export default function SearchBox() {
                         <Categories />
                     </DropdownMenu>
                 </ButtonDropdown>
-                
                     <Input type='text' placeholder='Searchs for products...' style={{ border: 'none' }}
                         onChange={(e) => setText(e.target.value)} onKeyDown={(e) => {
                             if (e.key === "Enter" && text.trim()) {
@@ -51,7 +50,6 @@ export default function SearchBox() {
                 
                 <Link to='/search'>
                     <Button onClick={() => { text.trim() && search(text) }} style={{ width: '50px', background: '#16bcdc', border: 'none' }}>
-
                         <BsSearch style={{ fontSize: '20px' }} />
                     </Button>
                 </Link>

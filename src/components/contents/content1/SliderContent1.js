@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import P404 from '../../../images/ErrorNetwork.png'
 function SliderContent1(props) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
@@ -27,7 +28,12 @@ function SliderContent1(props) {
         altText: `Slide ${index + 1}`,
         caption: `Slide ${index + 1}`,
         key: index,
-    })) : [];
+    })) : [{
+        src: P404,
+        altText: 1,
+        caption: 1,
+        key: 1
+    }];
     const slides = items.map((item) => {
         return (
             <CarouselItem
@@ -46,7 +52,7 @@ function SliderContent1(props) {
                 position: 'relative', borderRadius: '50px',
                 boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px'
             }}>
-                <Link to='/product'>
+                <Link to={product && '/detail/' + product.id}>
                     <Button className='btn-disco d-md-none d-lg-block d-none d-sm-block d-sm-none d-md-block'>DISCOVER NOW</Button>
                 </Link>
                 <h1 style={{ position: 'absolute', top: '10%', left: '5%', textShadow: '6px 6px 0px rgba(0,0,0,0.5)', zIndex:'10'}}>{product && product.title}</h1>

@@ -4,11 +4,12 @@ import { Button, Card, CardBody, CardText, CardTitle, Col } from 'reactstrap'
 import { useDispatch } from 'react-redux'
 import './product.css'
 import { addCart, countNum } from '../../redux/cartSlice'
+import ImgErr from '../../images/ErrorNetwork.png'
+
 export default function Product(props) {
   const [anim, setAnim] = useState(false)
   const dispatch = useDispatch()
   const { products } = props
-  const link = "/detail/" + products.id
   const onAnim = (prod)=>{
     setAnim(!anim)
     dispatch(addCart(prod))
@@ -22,7 +23,7 @@ export default function Product(props) {
       }} className={anim?'animate__animated animate__pulse':""}>
         <img
           alt="Card"
-          src={products.images[0]}
+          src={(products.images[0].slice(-3) == 'jpg' || products.images[0].slice(-4) == 'jpeg') ? products.images[0] : ImgErr}
           height={300}
         />
         <CardBody>
@@ -35,7 +36,7 @@ export default function Product(props) {
             <h4>{products.price} $</h4>
           </CardText>
           <CardText className='d-flex justify-content-between'>
-            <Link to={link}>
+            <Link to={"/detail/" + products.id}>
             <Button className='btn-detail'>Detail</Button>
             </Link>
             
