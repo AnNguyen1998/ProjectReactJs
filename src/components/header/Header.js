@@ -97,7 +97,7 @@ export default function Header() {
                   Order Tracking
                 </BreadcrumbItem>
                 <BreadcrumbItem href="#">
-                <Link style={{color:'white'}} to='/contactus'>Contact Us</Link>
+                  <Link style={{ color: 'white' }} to='/contactus'>Contact Us</Link>
                 </BreadcrumbItem>
                 <BreadcrumbItem>
                   FAQs
@@ -109,7 +109,6 @@ export default function Header() {
         <Row style={{ borderBottom: '1px solid rgba(255,255,255,0.4)' }}></Row>
         <Row noGutters className='p-2 d-xl-none d-lg-none d-xl-block mt-3'>
           <Col style={{ display: 'flex', justifyContent: 'start' }}>
-            <Button onClick={toggleCanvas} style={{ background: '#3dc1d3', border: 'none' }}><BsList fontSize={35} /></Button>
             <div className='canvas'>
               <Offcanvas isOpen={canvas} toggle={toggleCanvas}>
                 <OffcanvasHeader style={{ alignItems: 'center', display: 'flex', justifyContent: 'center' }} toggle={toggleCanvas}>
@@ -129,7 +128,7 @@ export default function Header() {
                                 <span>Hello, {currentUser.displayName}</span>
                               </BreadcrumbItem>
                               <BreadcrumbItem href="#">
-                                <span onClick={() => doSignOut().then(()=>window.location.reload())}>LogOut</span>
+                                <span onClick={() => doSignOut().then(() => window.location.reload())}>LogOut</span>
                               </BreadcrumbItem>
                             </Breadcrumb>
                             :
@@ -182,12 +181,21 @@ export default function Header() {
               </Offcanvas>
             </div>
           </Col>
-          <Col className='d-xl-none d-lg-none d-xl-block' style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <Link to='/ProjectReactJs'><img src={LiviLogo} width={150} /></Link>
-          </Col>
-          <Col style={{ display: 'flex', justifyContent: 'center', transform: 'translateX(14px)' }} className='d-xl-none d-lg-none d-xl-block'>
-            <Link to='/cart' style={{ position: 'relative' }}><BsCart3 style={{ fontSize: '35px', color: 'white' }} /><p ref={numref} className='num-cart1'>{num}</p></Link>
-          </Col>
+          <Container>
+            <Row>
+
+              <Col lg={4} md={4} sm={4} xs={4} style={{ display: 'flex', justifyContent: 'center' }}>
+                <Button onClick={toggleCanvas} style={{ background: '#3dc1d3', border: 'none' }}><BsList fontSize={35} /></Button>
+              </Col>
+              <Col lg={4}  md={4} sm={4} xs={4} className='d-xl-none d-lg-none d-xl-block' style={{ display: 'flex', justifyContent: 'start', transform:'translateX(-15px)' }}>
+                <Link to='/ProjectReactJs'><img src={LiviLogo} width={150} /></Link>
+              </Col>
+              <Col lg={4}  md={4} sm={4} xs={4} style={{ display: 'flex', justifyContent: 'center' }} className='d-xl-none d-lg-none d-xl-block'>
+                <Link to='/cart' style={{ position: 'relative' }}><BsCart3 style={{ fontSize: '35px', color: 'white' }} /><p ref={numref} className='num-cart1'>{num}</p></Link>
+              </Col>
+
+            </Row>
+          </Container>
         </Row>
         <Container>
           <Row noGutters style={{ padding: '40px 0px' }}>
@@ -202,12 +210,12 @@ export default function Header() {
                 userLoggedIn ?
                   <Link onClick={toggleModal} className='icon-la'>
                     <div style={{ width: '35px', height: '35px', borderRadius: '50px' }}>
-                      <img src={currentUser.photoURL?currentUser.photoURL:Avticon} style={{ width: '100%', borderRadius: '50px' }} />
+                      <img src={currentUser.photoURL ? currentUser.photoURL : Avticon} style={{ width: '100%', borderRadius: '50px' }} />
                     </div>
                     <span className='menu-span'>
                       <span className='l'>Hello</span>
-                      <span style={{ color: '#e74c3c' }} className='a'>{currentUser.displayName?currentUser.displayName.slice(0, currentUser.displayName.indexOf(" ")):currentUser.email.slice(0, currentUser.email.indexOf("@"))}</span>
-                      <span style={{width:'58px'}} className='l' onClick={() => doSignOut().then(()=>{window.location.reload()})}>Sign Out</span>
+                      <span style={{ color: '#e74c3c' }} className='a'>{currentUser.displayName ? currentUser.displayName.slice(0, currentUser.displayName.indexOf(" ")) : currentUser.email.slice(0, currentUser.email.indexOf("@"))}</span>
+                      <span style={{ width: '58px' }} className='l' onClick={() => doSignOut().then(() => { window.location.reload() })}>Sign Out</span>
                     </span>
                   </Link>
                   :
@@ -260,9 +268,9 @@ export default function Header() {
                   </Link>
                 </NavItem>
                 <div ref={refcollapse}>
-                  <NavItem style={{ marginRight: '40px'}}>
+                  <NavItem style={{ marginRight: '40px' }}>
                     <Link>CATEGORIES <BsArrowDownShort fontSize={25} /></Link>
-                    <div className='list-link' style={{zIndex:'1'}}>
+                    <div className='list-link' style={{ zIndex: '1' }}>
                       <CollapseLink isLink={isLink} />
                     </div>
                   </NavItem>
