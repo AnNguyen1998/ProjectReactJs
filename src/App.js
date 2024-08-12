@@ -20,7 +20,7 @@ function App() {
   },[])
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route index element={<Home/>}/>
           <Route path="/ProjectReactJs" element={<Home/>}/>
@@ -34,7 +34,7 @@ function App() {
           <Route path="/contactus" element={<Contact/>}/>
           <Route path="/filterbyprice" element={<FilterByPrice/>}/>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
