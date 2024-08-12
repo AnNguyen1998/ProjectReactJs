@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
+import { Breadcrumb, BreadcrumbItem, Button, Card, CardBody, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import { addCart, countNum } from '../../redux/cartSlice'
+import { fetchRange } from '../../redux/rangePriceSlice'
 
 export default function ListProductByPrice() {
-    const { rangeProducts } = useSelector(state => state.rangeProducts)
+    const { rangeProducts, min, max } = useSelector(state => state.rangeProducts)
     const [anim, setAnim] = useState(false)
     const dispatch = useDispatch()
     const onAnim = (prod) => {
@@ -13,9 +14,25 @@ export default function ListProductByPrice() {
         dispatch(addCart(prod))
         dispatch(countNum())
     }
+    useEffect(()=>{
+        dispatch(fetchRange({min: min, max: max}))
+    },[])
     // console.log(rangeProducts && rangeProducts)
     return (
         <Container className='mb-3'>
+            <div className='title' style={{ borderBottom: '1px solid #dfe6e9' }}>
+                <h2 style={{color:'black'}} className='title-font'>Products price from {min}$ to {max}$</h2>
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link style={{ color: '#3dc1d3' }} to='/ProjectReactJs'>
+                            Home
+                        </Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>
+                        Filter by Price
+                    </BreadcrumbItem>
+                </Breadcrumb>
+            </div>
             <Row className='p-3'>
                 {
                     rangeProducts && rangeProducts.map((item, index) => (

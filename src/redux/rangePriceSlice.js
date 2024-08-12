@@ -4,12 +4,13 @@ import axios from "axios";
 const initialState={
     rangeProducts:[],
     status:'start',
-    error:null
+    error:null,
+    min: 1,
+    max: 50,
 }
 const url = 'https://api.escuelajs.co/api/v1/products/?price_min='
-export const fetchRange = createAsyncThunk("rangeProducts/fetchRange", async (min, max)=>{
-    console(min + max + "aaa")
-    const response = await axios.get(url + min + '&price_max=' + max)
+export const fetchRange = createAsyncThunk("rangeProducts/fetchRange", async (range)=>{
+    const response = await axios.get(url + range.min + '&price_max=' + range.max)
     return response.data
 })
 
@@ -17,7 +18,10 @@ const rangePriceSlice = createSlice({
     name: 'rangeProducts',
     initialState,
     reducers:{
-        
+        addMinMax(state, action){
+            state.min = action.payload.min
+            state.max = action.payload.max
+        }
     },
     extraReducers:(builder)=>{
         builder
@@ -36,5 +40,5 @@ const rangePriceSlice = createSlice({
     }
 })
 
-export const {} = rangePriceSlice.actions
+export const {addMinMax} = rangePriceSlice.actions
 export default rangePriceSlice.reducer

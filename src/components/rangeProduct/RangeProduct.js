@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Col, Container, Dropdown, DropdownMenu, FormGroup, Input, Label, Row } from 'reactstrap'
-import { fetchRange } from '../../redux/rangePriceSlice'
+import { addMinMax, fetchRange } from '../../redux/rangePriceSlice'
 import { useNavigate } from 'react-router-dom'
 
 export default function RangeProduct() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
-    const [min, setMin] = useState(0)
-    const [max, setMax] = useState(0)
+    const [min, setMin] = useState(1)
+    const [max, setMax] = useState(50)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const toggle = () => {
         setDropdownOpen(!dropdownOpen)
         // console.log("aaa")
     }
-    const handle_filter = ()=>{
-        dispatch(fetchRange(min, max))
-        // navigate('/filterbyprice')
+    const handle_filter = (e)=>{
+        e.preventDefault();
+        dispatch(fetchRange({min: min, max: max}))
+        dispatch(addMinMax({min: min, max: max}))
+        navigate('/filterbyprice')
     }
-    
     return (
         <Container>
             <Row>
@@ -28,7 +29,7 @@ export default function RangeProduct() {
                 </Col>
                 <Dropdown isOpen={dropdownOpen}>
                     <DropdownMenu className='p-2'>
-                        
+                        <form onSubmit={handle_filter}>
                             <FormGroup>
                                 <Label for="Min">
                                     Min
@@ -53,7 +54,8 @@ export default function RangeProduct() {
                                     onChange={(e)=>setMax(e.target.value)}
                                 />
                             </FormGroup>   
-                            <Button onClick={handle_filter}>Confirm</Button>           
+                            <Button type='submit'>Confirm</Button>      
+                            </form>     
                     </DropdownMenu>
                 </Dropdown>
 
