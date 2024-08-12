@@ -23,7 +23,7 @@ export default function Product(props) {
       }} className={anim?'animate__animated animate__pulse':""}>
         <img
           alt="Card"
-          src={(products.images[0].slice(-3) == 'jpg' || products.images[0].slice(-4) == 'jpeg') ? products.images[0] : ImgErr}
+          src={(products.images[0].slice(-3) == 'jpg' || products.images[0].slice(-4) == 'jpeg' || products.images[0].slice(-3) == 'png') ? products.images[0] : ImgErr}
           height={300}
         />
         <CardBody>

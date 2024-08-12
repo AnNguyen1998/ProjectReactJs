@@ -125,7 +125,7 @@ export default function Header() {
                             <Breadcrumb className='p-1' listTag="div">
                               <BreadcrumbItem href="#">
                                 <BsPeople style={{ fontSize: '25px', transform: 'translateY(-4px)', marginRight: '5px' }} />
-                                <span>Hello, {currentUser.displayName}</span>
+                                <span>Hello, {currentUser.displayName?currentUser.displayName:currentUser.email.slice(0, currentUser.email.indexOf("@"))}</span>
                               </BreadcrumbItem>
                               <BreadcrumbItem href="#">
                                 <span onClick={() => doSignOut().then(() => window.location.reload())}>LogOut</span>
