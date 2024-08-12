@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ProjectReactJs/static/css/main.dce55cbc.css",
-    "main.js": "/ProjectReactJs/static/js/main.40a6077a.js",
+    "main.js": "/ProjectReactJs/static/js/main.491c06c3.js",
     "static/media/404.png": "/ProjectReactJs/static/media/404.19a01faaddcba524a829.png",
     "static/media/ErrorNetwork.png": "/ProjectReactJs/static/media/ErrorNetwork.9166707aece5ec278805.png",
     "static/media/LiviLogo.png": "/ProjectReactJs/static/media/LiviLogo.907346964bf09efc30f6.png",
@@ -9,10 +9,10 @@
     "static/media/ggicon.png": "/ProjectReactJs/static/media/ggicon.9a136a9879f1158a0715.png",
     "index.html": "/ProjectReactJs/index.html",
     "main.dce55cbc.css.map": "/ProjectReactJs/static/css/main.dce55cbc.css.map",
-    "main.40a6077a.js.map": "/ProjectReactJs/static/js/main.40a6077a.js.map"
+    "main.491c06c3.js.map": "/ProjectReactJs/static/js/main.491c06c3.js.map"
   },
   "entrypoints": [
     "static/css/main.dce55cbc.css",
-    "static/js/main.40a6077a.js"
+    "static/js/main.491c06c3.js"
   ]
 }
