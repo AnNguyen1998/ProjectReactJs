@@ -112,3 +112,6 @@ const options = {
   fix
   https://react-shop-backend.liara.run/products
   
+
+  //Grid template
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));

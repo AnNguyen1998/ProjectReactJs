@@ -1,31 +1,78 @@
 .animate-a {
     animation: run 10s linear infinite;
 }
-.coverAni{
+
+.coverAni {
     position: relative;
     height: 28px;
     padding: 5px;
     overflow: hidden;
 }
-.divAni1{
+
+.divAni1 {
     position: absolute;
     top: -5px;
 }
-.divAni2{
+
+.divAni2 {
     position: absolute;
     top: -5px;
     right: -74vw;
 }
-.pause-ani:hover .animate-a{
+
+.pause-ani:hover .wrapper .first, .pause-ani:hover .wrapper .second {
     animation-play-state: paused;
 }
 
-@keyframes run {
-    from {
-        transform: translateX(0);
+.wrapper {
+    overflow-x: hidden;
+    position: relative;
+    height: 100px;
+}
+
+.first {
+    width: 100vw;
+    height: 100px;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    animation: firstDiv 10s linear infinite;
+
+}
+
+@keyframes firstDiv {
+    0% {
+        left: 0px;
     }
 
-    to {
-        transform: translateX(-75%);
+    100% {
+        left: -100vw;
     }
+
+    
+}
+
+.second {
+    width: 100vw;
+    height: 100px;
+    position: absolute;
+    left: 100vw;
+    top: 0;
+    animation: secondDiv 10s linear infinite;
+}
+
+@keyframes secondDiv {
+    0% {
+        left: 100vw;
+    }
+
+   
+
+    100% {
+        left: 0px;
+    }
+
+
+
+    
 }
